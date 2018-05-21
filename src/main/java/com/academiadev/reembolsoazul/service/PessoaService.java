@@ -1,8 +1,8 @@
-package com.academiadev.reembolsoazul.projeto.service;
+package com.academiadev.reembolsoazul.service;
 
 import org.springframework.stereotype.Service;
 
-import com.academiadev.reembolsoazul.projeto.dto.PessoaDTO;
+import com.academiadev.reembolsoazul.dto.PessoaDTO;
 
 @Service
 public class PessoaService {

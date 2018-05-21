@@ -1,4 +1,4 @@
-package com.academiadev.reembolsoazul.projeto;
+package com.academiadev.reembolsoazul;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,14 +1,18 @@
-package com.academiadev.reembolsoazul.projeto.model;
+package com.academiadev.reembolsoazul.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "pessoa")
 public class Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -24,6 +28,9 @@ public class Pessoa implements Serializable {
 	private String email;
 	@Column
 	private TipoPermissao tipoPermissao;
+	
+	@OneToMany(mappedBy= "pessoa")
+	private List<Reembolso> reembolsos;
 
 	public Long getId() {
 		return id;

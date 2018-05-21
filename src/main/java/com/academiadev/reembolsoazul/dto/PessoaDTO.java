@@ -1,11 +1,10 @@
-package com.academiadev.reembolsoazul.projeto.dto;
+package com.academiadev.reembolsoazul.dto;
 
 public class PessoaDTO {
 
 	private String nome;
 	private String email;
 	private String senha;
-	private String senhaRepetida;
 	private String tipoPermissao;
 	private String codigoEmpresa;
 
@@ -31,14 +30,6 @@ public class PessoaDTO {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public String getSenhaRepetida() {
-		return senhaRepetida;
-	}
-
-	public void setSenhaRepetida(String senhaRepetida) {
-		this.senhaRepetida = senhaRepetida;
 	}
 
 	public String getTipoPermissao() {
