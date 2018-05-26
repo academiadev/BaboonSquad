@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "reembolso")
+@Table(name = "reembolsos")
 public class Reembolso implements Serializable {
 	
 	@Id

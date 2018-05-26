@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.academiadev.reembolsoazul.model.Empresa;
 
 @Repository
-public interface EmpresasRepository extends CrudRepository<Empresa, Long>{
-
+public interface EmpresaRepository extends CrudRepository<Empresa, Long>{
+	public Empresa findByCodigo(Integer codigoEmpresa);
 }
