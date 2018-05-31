@@ -1,30 +1,37 @@
 package br.com.academiadev.reembolsoazul.converter;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import org.springframework.stereotype.Component;
 
-import br.com.academiadev.reembolsoazul.dto.ReembolsoDTO;
+import br.com.academiadev.reembolsoazul.dto.ReembolsoDto;
 import br.com.academiadev.reembolsoazul.model.Reembolso;
 
 @Component
-public class ReembolsoConverter implements Converter<Reembolso, ReembolsoDTO> {
+public class ReembolsoConverter implements Converter<Reembolso, ReembolsoDto> {
 
 	@Override
-	public ReembolsoDTO toDTO(Reembolso entity) {
-		ReembolsoDTO dto = new ReembolsoDTO();
+	public ReembolsoDto toDTO(Reembolso entity) {
+		ReembolsoDto dto = new ReembolsoDto();
 		dto.setId(entity.getId());
 		dto.setNome(entity.getNome());
 		dto.setCategoria(entity.getCategoria().getDescricao());
 		dto.setStatus(entity.getStatus().getDescricao());
+		dto.setDataCadastro(entity.getDataCadastro().toString());
+		dto.setDataGasto(entity.getDataGasto().toString());
 		return dto;
 	}
 
 	@Override
-	public Reembolso toEntity(ReembolsoDTO dto) {
+	public Reembolso toEntity(ReembolsoDto dto) {
 		Reembolso entity = new Reembolso();
 		entity.setId(dto.getId());
 		entity.setNome(dto.getNome());
 		//entity.setCategoria(dto.getCategoria());
-		return null;
+		entity.setDataCadastro(LocalDate.parse(dto.getDataCadastro()));
+		entity.setDataGasto(LocalDate.parse(dto.getDataGasto()));
+		return entity;
 	}
 	
 	

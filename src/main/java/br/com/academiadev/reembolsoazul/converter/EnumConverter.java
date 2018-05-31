@@ -6,12 +6,12 @@ public interface EnumConverter <E, I, S> {
 	
 	public S entityToDescription(E entity);
 	
-	public S idToDescription(I id);
+	public S idToDescription(I id) throws ClassNotFoundException;
 	
-	public E idtoEntity(I id);
+	public E idtoEntity(I id) throws ClassNotFoundException;
 	
-	public I descriptionToEntity(S desc);
+	public I descriptionToEntity(S desc) throws ClassNotFoundException;
 	
-	public S descriptionToId(S desc);
+	public S descriptionToId(S desc) throws ClassNotFoundException;
 
 }

@@ -1,6 +1,7 @@
 package br.com.academiadev.reembolsoazul.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,6 +29,10 @@ public class Reembolso implements Serializable {
 	private CategoriaReembolso categoria;
 	@Column
 	private StatusReembolso status;
+	
+	private LocalDate dataCadastro;
+	
+	private LocalDate dataGasto;
 	
 	@Column
 	@NotNull
