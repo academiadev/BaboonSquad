@@ -10,11 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import lombok.Data;
-
-@Data
 @Entity
-@Table(name = "reembolso")
+@Table(name = "reembolsos")
 public class Reembolso implements Serializable {
 	
 	@Id
@@ -32,5 +29,36 @@ public class Reembolso implements Serializable {
 	@Column
 	@NotNull
 	private Pessoa usuario;
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public CategoriaReembolso getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(CategoriaReembolso categoria) {
+		this.categoria = categoria;
+	}
+	public StatusReembolso getStatus() {
+		return status;
+	}
+	public void setStatus(StatusReembolso status) {
+		this.status = status;
+	}
+	public Pessoa getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Pessoa usuario) {
+		this.usuario = usuario;
+	}
 
 }
