@@ -1,4 +1,4 @@
-package com.academiadev.reembolsoazul.config;
+package br.com.academiadev.reembolsoazul.config;
 
 import java.util.Properties;
 

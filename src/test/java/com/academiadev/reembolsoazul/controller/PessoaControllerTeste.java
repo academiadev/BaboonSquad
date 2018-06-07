@@ -6,9 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.academiadev.reembolsoazul.dto.EmpresaDTO;
-import com.academiadev.reembolsoazul.dto.PessoaDTO;
-import com.academiadev.reembolsoazul.service.EmailService;
+import br.com.academiadev.reembolsoazul.controller.PessoaController;
+import br.com.academiadev.reembolsoazul.dto.EmpresaDTO;
+import br.com.academiadev.reembolsoazul.dto.PessoaDTO;
+import br.com.academiadev.reembolsoazul.service.EmailService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

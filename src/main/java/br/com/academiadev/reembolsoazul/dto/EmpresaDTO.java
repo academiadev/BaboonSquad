@@ -1,4 +1,4 @@
-package com.academiadev.reembolsoazul.dto;
+package br.com.academiadev.reembolsoazul.dto;
 
 public class EmpresaDTO {
 

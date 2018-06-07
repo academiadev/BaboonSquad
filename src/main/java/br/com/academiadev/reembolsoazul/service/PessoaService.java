@@ -6,17 +6,13 @@ import java.util.regex.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import br.com.academiadev.reembolsoazul.converter.PessoaConverter;
 import br.com.academiadev.reembolsoazul.dto.PessoaDTO;
-
-import com.academiadev.reembolsoazul.converter.PessoaConverter;
-import com.academiadev.reembolsoazul.dto.PessoaDTO;
-import com.academiadev.reembolsoazul.model.Empresa;
-import com.academiadev.reembolsoazul.model.Pessoa;
-import com.academiadev.reembolsoazul.model.TipoPermissao;
-import com.academiadev.reembolsoazul.repository.EmpresaRepository;
-import com.academiadev.reembolsoazul.repository.PessoaRepository;
-
+import br.com.academiadev.reembolsoazul.model.Empresa;
+import br.com.academiadev.reembolsoazul.model.Pessoa;
+import br.com.academiadev.reembolsoazul.model.TipoPermissao;
+import br.com.academiadev.reembolsoazul.repository.EmpresaRepository;
+import br.com.academiadev.reembolsoazul.repository.PessoaRepository;
 
 @Service
 public class PessoaService {

@@ -1,11 +1,11 @@
-package com.academiadev.reembolsoazul.converter;
+package br.com.academiadev.reembolsoazul.converter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.academiadev.reembolsoazul.dto.PessoaDTO;
-import com.academiadev.reembolsoazul.model.Pessoa;
-import com.academiadev.reembolsoazul.model.TipoPermissao;
+import br.com.academiadev.reembolsoazul.dto.PessoaDTO;
+import br.com.academiadev.reembolsoazul.model.Pessoa;
+import br.com.academiadev.reembolsoazul.model.TipoPermissao;
 
 @Component
 public class PessoaConverter implements Converter<Pessoa, PessoaDTO>{

@@ -1,9 +1,9 @@
-package com.academiadev.reembolsoazul.converter;
+package br.com.academiadev.reembolsoazul.converter;
 
 import org.springframework.stereotype.Component;
 
-import com.academiadev.reembolsoazul.dto.EmpresaDTO;
-import com.academiadev.reembolsoazul.model.Empresa;
+import br.com.academiadev.reembolsoazul.dto.EmpresaDTO;
+import br.com.academiadev.reembolsoazul.model.Empresa;
 
 @Component
 public class EmpresaConverter implements Converter<Empresa, EmpresaDTO> {

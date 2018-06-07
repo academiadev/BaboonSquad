@@ -1,4 +1,4 @@
-package com.academiadev.reembolsoazul.converter;
+package br.com.academiadev.reembolsoazul.converter;
 
 public interface Converter<T, D> {
 
