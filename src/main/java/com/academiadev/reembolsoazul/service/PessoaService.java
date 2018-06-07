@@ -1,5 +1,6 @@
 package com.academiadev.reembolsoazul.service;
 
+import java.util.Random;
 import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,17 +27,26 @@ public class PessoaService {
 	private PessoaRepository pessoaRepository;
 
 	public void cadastrar(PessoaDTO pessoaDto) {
-		validaIgual(pessoaDto.getSenha(), pessoaDto.getSenhaRepetida());
-		Pessoa pessoa = pessoaConverter.toEntity(pessoaDto);
-		validaDigitos(pessoa.getSenha());
-		validaEmail(pessoaDto.getEmail());
-		setarEmpresaParaCadastro(pessoa);
-		if(pessoa.getTipoPermissao() == TipoPermissao.ADMIN) {
-			Empresa empresa = pessoa.getEmpresa();
-			empresa.setCodigo(132131);
-			empresaRepository.save(empresa);
+		if (validaIgual(pessoaDto.getSenha(), pessoaDto.getSenhaRepetida())) {
+			Pessoa pessoa = pessoaConverter.toEntity(pessoaDto);
+			if (validaDigitos(pessoa.getSenha()) && validaEmail(pessoaDto.getEmail())) {
+				setarEmpresaParaCadastro(pessoa);
+				if (pessoa.getTipoPermissao() == TipoPermissao.ADMIN) {
+					gravaEmpresa(pessoa);
+				}
+				pessoaRepository.save(pessoa);
+			}
 		}
-		pessoaRepository.save(pessoa);
+
+	}
+
+	private void gravaEmpresa(Pessoa pessoa) {
+		Empresa empresa = pessoa.getEmpresa();
+		do {
+			Random random = new Random();
+			empresa.setCodigo(random.nextInt(99999));
+		} while (empresaRepository.existsByCodigo(empresa.getCodigo()));
+		empresaRepository.save(empresa);
 	}
 
 	private Pessoa setarEmpresaParaCadastro(Pessoa pessoa) {
@@ -48,7 +58,7 @@ public class PessoaService {
 	}
 
 	private Boolean validaEmail(String email) {
-		Pattern pattern = Pattern.compile("^[a-zA-z].{8,}$");
+		Pattern pattern = Pattern.compile("^\\w*(\\.\\w*)?@\\w*\\.[a-z]+(\\.[a-z]+)?$");
 		return pattern.matcher(email).matches();
 	}
 
