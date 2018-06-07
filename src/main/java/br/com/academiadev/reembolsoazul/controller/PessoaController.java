@@ -16,7 +16,7 @@ public class PessoaController {
 	public PessoaService pessoaService;
 
 	@PostMapping(value = "/gravar")
-	public void cadastrar(PessoaDTO pessoaDto) {
-		pessoaService.cadastrar(pessoaDto);
+	public void cadastrar(PessoaDTO pessoaDTO) {
+		pessoaService.cadastrar(pessoaDTO);
 	}
 }
