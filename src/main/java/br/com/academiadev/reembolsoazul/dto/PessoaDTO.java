@@ -5,8 +5,9 @@ public class PessoaDTO {
 	private String nome;
 	private String email;
 	private String senha;
-	private String tipoPermissao;
-	private String codigoEmpresa;
+	private String senhaRepetida;
+	private Integer tipoPermissao;
+	private EmpresaDTO empresa;
 
 	public String getNome() {
 		return nome;
@@ -32,20 +33,28 @@ public class PessoaDTO {
 		this.senha = senha;
 	}
 
-	public String getTipoPermissao() {
+	public Integer getTipoPermissao() {
 		return tipoPermissao;
 	}
 
-	public void setTipoPermissao(String tipoPermissao) {
+	public void setTipoPermissao(Integer tipoPermissao) {
 		this.tipoPermissao = tipoPermissao;
 	}
 
-	public String getCodigoEmpresa() {
-		return codigoEmpresa;
+	public String getSenhaRepetida() {
+		return senhaRepetida;
 	}
 
-	public void setCodigoEmpresa(String codigoEmpresa) {
-		this.codigoEmpresa = codigoEmpresa;
+	public void setSenhaRepetida(String senhaRepetida) {
+		this.senhaRepetida = senhaRepetida;
+	}
+
+	public EmpresaDTO getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(EmpresaDTO empresa) {
+		this.empresa = empresa;
 	}
 
 }

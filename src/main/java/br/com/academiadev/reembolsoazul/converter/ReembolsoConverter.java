@@ -17,9 +17,7 @@ public class ReembolsoConverter implements Converter<Reembolso, ReembolsoDto> {
 		dto.setId(entity.getId());
 		dto.setNome(entity.getNome());
 		dto.setCategoria(entity.getCategoria().getDescricao());
-		dto.setStatus(entity.getStatus().getDescricao());
-		dto.setDataCadastro(entity.getDataCadastro().toString());
-		dto.setDataGasto(entity.getDataGasto().toString());
+		dto.setStatus(entity.getStatus().getDescricao());;
 		return dto;
 	}
 
@@ -28,9 +26,7 @@ public class ReembolsoConverter implements Converter<Reembolso, ReembolsoDto> {
 		Reembolso entity = new Reembolso();
 		entity.setId(dto.getId());
 		entity.setNome(dto.getNome());
-		//entity.setCategoria(dto.getCategoria());
-		entity.setDataCadastro(LocalDate.parse(dto.getDataCadastro()));
-		entity.setDataGasto(LocalDate.parse(dto.getDataGasto()));
+		//entity.setCategoria(dto.getCategoria());;
 		return entity;
 	}
 	

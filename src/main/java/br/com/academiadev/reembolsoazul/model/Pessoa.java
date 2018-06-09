@@ -5,31 +5,43 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "pessoa")
+@Table(name = "pessoas")
 public class Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
 	@Column
 	private String nome;
+
 	@Column
 	private String senha;
+
 	@Column
 	private String email;
+
+	@Enumerated(EnumType.ORDINAL)
 	@Column
 	private TipoPermissao tipoPermissao;
-	
-	@OneToMany(mappedBy= "pessoa")
+
+	@ManyToOne
+	private Empresa empresa;
+
+	@OneToMany(mappedBy = "usuario")
 	private List<Reembolso> reembolsos;
 
 	public Long getId() {
@@ -70,6 +82,14 @@ public class Pessoa implements Serializable {
 
 	public void setTipoPermissao(TipoPermissao tipoPermissao) {
 		this.tipoPermissao = tipoPermissao;
+	}
+
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 
 }
