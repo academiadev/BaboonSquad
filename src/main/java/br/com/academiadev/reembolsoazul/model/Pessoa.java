@@ -1,22 +1,32 @@
 package br.com.academiadev.reembolsoazul.model;
 
-import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "pessoas")
-public class Pessoa implements Serializable {
+public class Pessoa implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
 
@@ -34,16 +44,16 @@ public class Pessoa implements Serializable {
 	@Column
 	private String email;
 
-	@Enumerated(EnumType.ORDINAL)
-	@Column
-	private TipoPermissao tipoPermissao;
-
 	@ManyToOne
 	private Empresa empresa;
 
 	@OneToMany(mappedBy = "usuario")
 	private List<Reembolso> reembolsos;
-
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "usuario_autorizacao", joinColumns = @JoinColumn(name = "pessoa_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "autorizacao_id", referencedColumnName = "id"))
+	private List<Autorizacao> autorizacoes;
+	
 	public Long getId() {
 		return id;
 	}
@@ -76,20 +86,60 @@ public class Pessoa implements Serializable {
 		this.email = email;
 	}
 
-	public TipoPermissao getTipoPermissao() {
-		return tipoPermissao;
-	}
-
-	public void setTipoPermissao(TipoPermissao tipoPermissao) {
-		this.tipoPermissao = tipoPermissao;
-	}
-
 	public Empresa getEmpresa() {
 		return empresa;
 	}
 
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getPassword() {
+		return this.senha;
+	}
+
+	@Override
+	public String getUsername() {
+		return this.email;
+	}
+
+	@JsonIgnore
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@JsonIgnore
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@JsonIgnore
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@JsonIgnore
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
+
+	public List<Autorizacao> getAutorizacoes() {
+		return autorizacoes;
+	}
+
+	public void setAutorizacoes(List<Autorizacao> autorizacoes) {
+		this.autorizacoes = autorizacoes;
 	}
 
 }

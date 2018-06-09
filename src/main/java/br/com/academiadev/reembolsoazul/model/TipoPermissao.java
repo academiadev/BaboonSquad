@@ -1,8 +1,8 @@
 package br.com.academiadev.reembolsoazul.model;
 
 public enum TipoPermissao {
-	ADMIN(0, "Admin"), //
-	USER(1, "User");
+	ADMIN(1, "ROLE_ADMIN"), //
+	USER(2, "ROLE_USER");
 
 	private Integer id;
 

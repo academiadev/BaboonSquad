@@ -5,7 +5,6 @@ public class PessoaDTO {
 	private String nome;
 	private String email;
 	private String senha;
-	private String senhaRepetida;
 	private Integer tipoPermissao;
 	private EmpresaDTO empresa;
 
@@ -39,14 +38,6 @@ public class PessoaDTO {
 
 	public void setTipoPermissao(Integer tipoPermissao) {
 		this.tipoPermissao = tipoPermissao;
-	}
-
-	public String getSenhaRepetida() {
-		return senhaRepetida;
-	}
-
-	public void setSenhaRepetida(String senhaRepetida) {
-		this.senhaRepetida = senhaRepetida;
 	}
 
 	public EmpresaDTO getEmpresa() {

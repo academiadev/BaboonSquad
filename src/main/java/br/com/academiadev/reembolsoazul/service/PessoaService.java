@@ -1,16 +1,20 @@
 package br.com.academiadev.reembolsoazul.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
-import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.academiadev.reembolsoazul.converter.PessoaConverter;
 import br.com.academiadev.reembolsoazul.dto.PessoaDTO;
+import br.com.academiadev.reembolsoazul.model.Autorizacao;
 import br.com.academiadev.reembolsoazul.model.Empresa;
 import br.com.academiadev.reembolsoazul.model.Pessoa;
 import br.com.academiadev.reembolsoazul.model.TipoPermissao;
+import br.com.academiadev.reembolsoazul.repository.AutorizacaoRepository;
 import br.com.academiadev.reembolsoazul.repository.EmpresaRepository;
 import br.com.academiadev.reembolsoazul.repository.PessoaRepository;
 
@@ -24,22 +28,41 @@ public class PessoaService {
 	private EmpresaRepository empresaRepository;
 
 	@Autowired
+	private PasswordEncoder passwordEncoder;
+
+	@Autowired
 	private PessoaRepository pessoaRepository;
 
-	public void cadastrar(PessoaDTO pessoaDto) {
-		if (validaIgual(pessoaDto.getSenha(), pessoaDto.getSenhaRepetida())) {
-			Pessoa pessoa = pessoaConverter.toEntity(pessoaDto);
-			if (validaDigitos(pessoa.getSenha()) && validaEmail(pessoaDto.getEmail())) {
-				setarEmpresaParaCadastro(pessoa);
-				if (pessoa.getTipoPermissao() == TipoPermissao.ADMIN) {
-					gravaEmpresa(pessoa);
-				}
-				pessoaRepository.save(pessoa);
-			}
-		}
+	@Autowired
+	private AutorizacaoRepository autorizacaoRepository;
 
+	public void cadastrar(PessoaDTO pessoaDto) {
+		Pessoa pessoa = pessoaConverter.toEntity(pessoaDto);
+		pessoa.setSenha(passwordEncoder.encode(pessoa.getPassword()));
+		pessoa.setAutorizacoes(getAutorizacao(pessoaDto.getTipoPermissao()));
+		if(pessoaDto.getTipoPermissao() == TipoPermissao.ADMIN.getId()) {
+			gravaEmpresa(pessoa);
+		}else {
+			setarEmpresa(pessoa);
+		}
+		pessoaRepository.save(pessoa);
 	}
 
+	private List<Autorizacao> getAutorizacao(Integer id) {
+		List<Autorizacao> autorizacoes = new ArrayList<>();
+		Autorizacao autorizacao = autorizacaoRepository.findOne(Long.valueOf(id));
+		if (autorizacao.getNome().equals(TipoPermissao.ADMIN.getDescricao())) {
+			autorizacoes.add(new Autorizacao(Long.valueOf(TipoPermissao.USER.getId()) ,TipoPermissao.USER.getDescricao()));
+		}
+		autorizacoes.add(autorizacao);
+		return autorizacoes;
+	}
+
+	private Pessoa setarEmpresa(Pessoa pessoa) {
+		pessoa.setEmpresa(empresaRepository.findByCodigo(pessoa.getEmpresa().getCodigo()));
+		return pessoa;
+	}
+	
 	private void gravaEmpresa(Pessoa pessoa) {
 		Empresa empresa = pessoa.getEmpresa();
 		do {
@@ -48,27 +71,4 @@ public class PessoaService {
 		} while (empresaRepository.existsByCodigo(empresa.getCodigo()));
 		empresaRepository.save(empresa);
 	}
-
-	private Pessoa setarEmpresaParaCadastro(Pessoa pessoa) {
-		if (pessoa.getTipoPermissao() == TipoPermissao.USER) {
-			pessoa.setEmpresa(empresaRepository.findByCodigo(pessoa.getEmpresa().getCodigo()));
-		}
-		return pessoa;
-
-	}
-
-	private Boolean validaEmail(String email) {
-		Pattern pattern = Pattern.compile("^\\w*(\\.\\w*)?@\\w*\\.[a-z]+(\\.[a-z]+)?$");
-		return pattern.matcher(email).matches();
-	}
-
-	private Boolean validaIgual(String senha, String senhaRepetida) {
-		return senha == senhaRepetida ? true : false;
-	}
-
-	private Boolean validaDigitos(String senha) {
-		Pattern pattern = Pattern.compile("^[a-zA-z].{8,}$");
-		return pattern.matcher(senha).matches();
-	}
-
 }

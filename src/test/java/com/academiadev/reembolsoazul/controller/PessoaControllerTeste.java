@@ -30,7 +30,6 @@ public class PessoaControllerTeste {
 		pessoaDTO.setEmail("Jao@acom");
 		pessoaDTO.setNome("Jpones");
 		pessoaDTO.setSenha("aaaaaaaaaa");
-		pessoaDTO.setSenhaRepetida("aaaaaaaaaa");
 		pessoaDTO.setTipoPermissao(0);
 		pessoaDTO.setEmpresa(empresaDTO);
 		pessoaController.cadastrar(pessoaDTO);
@@ -47,7 +46,6 @@ public class PessoaControllerTeste {
 		pessoaDTO.setEmail("Jao");
 		pessoaDTO.setNome("Jpones");
 		pessoaDTO.setSenha("****");
-		pessoaDTO.setSenhaRepetida("****");
 		pessoaDTO.setTipoPermissao(1);
 		pessoaDTO.setEmpresa(empresaDTO);
 		pessoaController.cadastrar(pessoaDTO);

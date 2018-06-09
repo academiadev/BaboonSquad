@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 
 import br.com.academiadev.reembolsoazul.dto.PessoaDTO;
 import br.com.academiadev.reembolsoazul.model.Pessoa;
-import br.com.academiadev.reembolsoazul.model.TipoPermissao;
 
 @Component
 public class PessoaConverter implements Converter<Pessoa, PessoaDTO>{
@@ -19,7 +18,6 @@ public class PessoaConverter implements Converter<Pessoa, PessoaDTO>{
 		dto.setEmail(entity.getEmail());
 		dto.setNome(entity.getNome());
 		dto.setSenha(entity.getSenha());
-		dto.setTipoPermissao(entity.getTipoPermissao().getId());
 		dto.setEmpresa(empresaConverter.toDTO(entity.getEmpresa()));
 		return dto;
 	}
@@ -30,7 +28,6 @@ public class PessoaConverter implements Converter<Pessoa, PessoaDTO>{
 		pessoa.setEmail(dto.getEmail());
 		pessoa.setNome(dto.getNome());
 		pessoa.setSenha(dto.getSenha());
-		pessoa.setTipoPermissao(TipoPermissao.convertToEnum(dto.getTipoPermissao()));
 		pessoa.setEmpresa(empresaConverter.toEntity(dto.getEmpresa()));
 		return pessoa;
 	}
