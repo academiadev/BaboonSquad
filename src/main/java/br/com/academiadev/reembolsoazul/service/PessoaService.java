@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.academiadev.reembolsoazul.converter.PessoaConverter;
 import br.com.academiadev.reembolsoazul.dto.PessoaDTO;
+import br.com.academiadev.reembolsoazul.exception.EmailCadastraExcption;
 import br.com.academiadev.reembolsoazul.model.Autorizacao;
 import br.com.academiadev.reembolsoazul.model.Empresa;
 import br.com.academiadev.reembolsoazul.model.Pessoa;
@@ -38,6 +39,8 @@ public class PessoaService {
 
 	public void cadastrar(PessoaDTO pessoaDto) {
 		Pessoa pessoa = pessoaConverter.toEntity(pessoaDto);
+		if(pessoaRepository.findByEmail(pessoa.getEmail())!=null) 
+			throw new EmailCadastraExcption();
 		pessoa.setSenha(passwordEncoder.encode(pessoa.getPassword()));
 		pessoa.setAutorizacoes(getAutorizacao(pessoaDto.getTipoPermissao()));
 		if(pessoaDto.getTipoPermissao() == TipoPermissao.ADMIN.getId()) {

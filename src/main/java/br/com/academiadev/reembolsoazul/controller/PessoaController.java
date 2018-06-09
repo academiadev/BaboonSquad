@@ -22,4 +22,9 @@ public class PessoaController {
 		pessoaService.cadastrar(pessoaDTO);
 		return ResponseEntity.ok(pessoaDTO);
 	}
+	
+	@PostMapping(value ="/alterar")
+	public void alterar() {
+		
+	}
 }
