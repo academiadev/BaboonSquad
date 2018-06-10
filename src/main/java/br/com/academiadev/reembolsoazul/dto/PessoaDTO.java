@@ -5,9 +5,9 @@ import lombok.Data;
 @Data
 public class PessoaDTO {
 
-	private String nome;
+	private String name;
 	private String email;
-	private String senha;
-	private Integer tipoPermissao;
-	private EmpresaDTO empresa;
+	private String password;
+	private Integer typePermission;
+	private EmpresaDTO company;
 }

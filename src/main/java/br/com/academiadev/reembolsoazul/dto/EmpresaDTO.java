@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Data
 public class EmpresaDTO {
-
-	private String nome;
-	private Integer codigo;
+	private String name;
+	private Integer code;
 }

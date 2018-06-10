@@ -24,14 +24,14 @@ public class PessoaControllerTeste {
 	@Test
 	public void testaGravarAdmin() {
 		EmpresaDTO empresaDTO = new EmpresaDTO();
-		empresaDTO.setNome("Empresa das Empresas");
+		empresaDTO.setName("Empresa das Empresas");
 			
 		PessoaDTO pessoaDTO = new PessoaDTO();
 		pessoaDTO.setEmail("Jao@acom");
-		pessoaDTO.setNome("Jpones");
-		pessoaDTO.setSenha("aaaaaaaaaa");
-		pessoaDTO.setTipoPermissao(0);
-		pessoaDTO.setEmpresa(empresaDTO);
+		pessoaDTO.setName("Jpones");
+		pessoaDTO.setPassword("aaaaaaaaaa");
+		pessoaDTO.setTypePermission(1);
+		pessoaDTO.setCompany(empresaDTO);
 		pessoaController.cadastrar(pessoaDTO);
 		
 		emailService.enviar();
@@ -40,14 +40,14 @@ public class PessoaControllerTeste {
 	@Test
 	public void testaGravarUser() {
 		EmpresaDTO empresaDTO = new EmpresaDTO();
-		empresaDTO.setCodigo(132131);
+		empresaDTO.setCode(132131);
 			
 		PessoaDTO pessoaDTO = new PessoaDTO();
 		pessoaDTO.setEmail("Jao");
-		pessoaDTO.setNome("Jpones");
-		pessoaDTO.setSenha("****");
-		pessoaDTO.setTipoPermissao(1);
-		pessoaDTO.setEmpresa(empresaDTO);
+		pessoaDTO.setName("Jpones");
+		pessoaDTO.setPassword("****");
+		pessoaDTO.setTypePermission(1);
+		pessoaDTO.setCompany(empresaDTO);
 		pessoaController.cadastrar(pessoaDTO);
 	}
 }

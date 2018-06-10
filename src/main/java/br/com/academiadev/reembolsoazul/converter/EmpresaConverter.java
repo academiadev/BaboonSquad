@@ -11,8 +11,8 @@ public class EmpresaConverter implements Converter<Empresa, EmpresaDTO> {
 	@Override
 	public EmpresaDTO toDTO(Empresa entity) {
 		EmpresaDTO empresaDTO = new EmpresaDTO();
-		empresaDTO.setCodigo(entity.getCodigo());
-		empresaDTO.setNome(entity.getNome());
+		empresaDTO.setCode(entity.getCodigo());
+		empresaDTO.setName(entity.getNome());
 		return empresaDTO;
 	}
 
@@ -20,10 +20,10 @@ public class EmpresaConverter implements Converter<Empresa, EmpresaDTO> {
 	public Empresa toEntity(EmpresaDTO dto) {
 		Empresa empresa = new Empresa();
 
-		if (dto.getNome() != null) {
-			empresa.setNome(dto.getNome());
+		if (dto.getName() != null) {
+			empresa.setNome(dto.getName());
 		} else {
-			empresa.setCodigo(dto.getCodigo());
+			empresa.setCodigo(dto.getCode());
 		}
 		return empresa;
 	}
