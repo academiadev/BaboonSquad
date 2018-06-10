@@ -42,8 +42,8 @@ public class PessoaService {
 		if(pessoaRepository.findByEmail(pessoa.getEmail())!=null) 
 			throw new EmailCadastraExcption();
 		pessoa.setSenha(passwordEncoder.encode(pessoa.getPassword()));
-		pessoa.setAutorizacoes(getAutorizacao(pessoaDto.getTipoPermissao()));
-		if(pessoaDto.getTipoPermissao() == TipoPermissao.ADMIN.getId()) {
+		pessoa.setAutorizacoes(getAutorizacao(pessoaDto.getTypePermission()));
+		if(pessoaDto.getTypePermission() == TipoPermissao.ADMIN.getId()) {
 			gravaEmpresa(pessoa);
 		}else {
 			setarEmpresa(pessoa);

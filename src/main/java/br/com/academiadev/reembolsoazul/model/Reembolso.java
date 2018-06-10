@@ -28,14 +28,6 @@ public class Reembolso implements Serializable {
 	@Column
 	private StatusReembolso status;
 
-
-
-
-
-
-
-	
-
 	@Column
 	@NotNull
 	private Pessoa usuario;

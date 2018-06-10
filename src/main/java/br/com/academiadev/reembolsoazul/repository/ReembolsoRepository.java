@@ -10,6 +10,6 @@ import br.com.academiadev.reembolsoazul.model.Reembolso;
 @Repository
 public interface ReembolsoRepository extends CrudRepository<Reembolso, Long> {
 	
-	public List<Reembolso> findTop10OrderByDataGastoAsc();
+	//public List<Reembolso> findTop10OrderByDataGastoAsc();
 
 }

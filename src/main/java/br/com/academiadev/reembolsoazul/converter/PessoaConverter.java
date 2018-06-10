@@ -16,9 +16,9 @@ public class PessoaConverter implements Converter<Pessoa, PessoaDTO>{
 	public PessoaDTO toDTO(Pessoa entity) {
 		PessoaDTO dto = new PessoaDTO();
 		dto.setEmail(entity.getEmail());
-		dto.setNome(entity.getNome());
-		dto.setSenha(entity.getSenha());
-		dto.setEmpresa(empresaConverter.toDTO(entity.getEmpresa()));
+		dto.setName(entity.getNome());
+		dto.setPassword(entity.getSenha());
+		dto.setCompany(empresaConverter.toDTO(entity.getEmpresa()));
 		return dto;
 	}
 
@@ -26,9 +26,9 @@ public class PessoaConverter implements Converter<Pessoa, PessoaDTO>{
 	public Pessoa toEntity(PessoaDTO dto) {
 		Pessoa pessoa = new Pessoa();
 		pessoa.setEmail(dto.getEmail());
-		pessoa.setNome(dto.getNome());
-		pessoa.setSenha(dto.getSenha());
-		pessoa.setEmpresa(empresaConverter.toEntity(dto.getEmpresa()));
+		pessoa.setNome(dto.getName());
+		pessoa.setSenha(dto.getPassword());
+		pessoa.setEmpresa(empresaConverter.toEntity(dto.getCompany()));
 		return pessoa;
 	}
 
