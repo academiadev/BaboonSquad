@@ -1,6 +1,11 @@
 package br.com.academiadev.reembolsoazul.model;
 
 import java.io.Serializable;
+<<<<<<< HEAD
+=======
+import java.math.BigDecimal;
+import java.time.LocalDate;
+>>>>>>> 73ff43ad8cd4c74d41f33d043578cef2dc63a516
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +17,10 @@ import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
+<<<<<<< HEAD
+=======
+@Data
+>>>>>>> 73ff43ad8cd4c74d41f33d043578cef2dc63a516
 @Entity
 @Table(name = "reembolsos")
 @Data
@@ -29,10 +38,17 @@ public class Reembolso implements Serializable {
 	private CategoriaReembolso categoria;
 	@Column
 	private StatusReembolso status;
-
+	@Column 
+	private LocalDate data;
 	@Column
+	private BigDecimal valor;
+	@Column 
 	@NotNull
+<<<<<<< HEAD
 	private User usuario;
 
 
+=======
+	private Pessoa usuario;
+>>>>>>> 73ff43ad8cd4c74d41f33d043578cef2dc63a516
 }
