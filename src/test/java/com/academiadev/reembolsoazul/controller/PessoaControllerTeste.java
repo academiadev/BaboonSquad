@@ -7,8 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import br.com.academiadev.reembolsoazul.controller.PessoaController;
-import br.com.academiadev.reembolsoazul.dto.EmpresaDTO;
-import br.com.academiadev.reembolsoazul.dto.PessoaDTO;
+import br.com.academiadev.reembolsoazul.dto.CompanyDTO;
+import br.com.academiadev.reembolsoazul.dto.UserDTO;
 import br.com.academiadev.reembolsoazul.service.EmailService;
 
 @RunWith(SpringRunner.class)
@@ -23,10 +23,10 @@ public class PessoaControllerTeste {
 	
 	@Test
 	public void testaGravarAdmin() {
-		EmpresaDTO empresaDTO = new EmpresaDTO();
+		CompanyDTO empresaDTO = new CompanyDTO();
 		empresaDTO.setName("Empresa das Empresas");
 			
-		PessoaDTO pessoaDTO = new PessoaDTO();
+		UserDTO pessoaDTO = new UserDTO();
 		pessoaDTO.setEmail("Jao@acom");
 		pessoaDTO.setName("Jpones");
 		pessoaDTO.setPassword("aaaaaaaaaa");
@@ -39,10 +39,10 @@ public class PessoaControllerTeste {
 	
 	@Test
 	public void testaGravarUser() {
-		EmpresaDTO empresaDTO = new EmpresaDTO();
+		CompanyDTO empresaDTO = new CompanyDTO();
 		empresaDTO.setCode(132131);
 			
-		PessoaDTO pessoaDTO = new PessoaDTO();
+		UserDTO pessoaDTO = new UserDTO();
 		pessoaDTO.setEmail("Jao");
 		pessoaDTO.setName("Jpones");
 		pessoaDTO.setPassword("****");

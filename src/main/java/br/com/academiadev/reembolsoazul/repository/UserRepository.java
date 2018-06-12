@@ -3,9 +3,9 @@ package br.com.academiadev.reembolsoazul.repository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import br.com.academiadev.reembolsoazul.model.Pessoa;
+import br.com.academiadev.reembolsoazul.model.User;
 
 @Repository
-public interface PessoaRepository extends CrudRepository<Pessoa, Long> {
-	public Pessoa findByEmail(String email);
+public interface UserRepository extends CrudRepository<User, Long> {
+	public User findByEmail(String email);
 }

@@ -1,6 +1,5 @@
 package br.com.academiadev.reembolsoazul.controller;
 
-import java.io.IOException;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +15,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,7 +27,7 @@ import br.com.academiadev.reembolsoazul.config.jwt.TokenHelper;
 import br.com.academiadev.reembolsoazul.dto.LoginDTO;
 import br.com.academiadev.reembolsoazul.dto.TokenDTO;
 import br.com.academiadev.reembolsoazul.dto.TrocaSenhaDTO;
-import br.com.academiadev.reembolsoazul.model.Pessoa;
+import br.com.academiadev.reembolsoazul.model.User;
 import br.com.academiadev.reembolsoazul.service.CustomUserDetailsService;
 
 @RestController
@@ -52,7 +50,7 @@ public class AutenticacaoController {
 	public ResponseEntity<?> login(@RequestBody LoginDTO authenticationRequest, HttpServletResponse response, Device dispositivo) throws Exception {
 		final Authentication autenticacao = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(), authenticationRequest.getPassword()));
 		SecurityContextHolder.getContext().setAuthentication(autenticacao);
-		Pessoa usuario = (Pessoa) autenticacao.getPrincipal();
+		User usuario = (User) autenticacao.getPrincipal();
 		String token = tokenHelper.gerarToken(usuario.getUsername(), dispositivo);
 		int expiresIn = tokenHelper.getExpiredIn(dispositivo);
 		return ResponseEntity.ok(new TokenDTO(token, Long.valueOf(expiresIn)));

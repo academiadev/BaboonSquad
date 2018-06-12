@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.academiadev.reembolsoazul.dto.PessoaDTO;
-import br.com.academiadev.reembolsoazul.service.PessoaService;
+import br.com.academiadev.reembolsoazul.dto.UserDTO;
+import br.com.academiadev.reembolsoazul.service.UserService;
 
 @RestController
 @RequestMapping("/pessoa")
 public class PessoaController {
 	
 	@Autowired
-	public PessoaService pessoaService;
+	public UserService userService;
 
 	@PostMapping(value = "/gravar")
-	public ResponseEntity<?> cadastrar(@RequestBody PessoaDTO pessoaDTO) {
-		pessoaService.cadastrar(pessoaDTO);
+	public ResponseEntity<?> cadastrar(@RequestBody UserDTO pessoaDTO) {
+		userService.cadastrar(pessoaDTO);
 		return ResponseEntity.ok(pessoaDTO);
 	}
 	

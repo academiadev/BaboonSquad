@@ -8,7 +8,6 @@ import org.springframework.mobile.device.Device;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import br.com.academiadev.reembolsoazul.model.Pessoa;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 
