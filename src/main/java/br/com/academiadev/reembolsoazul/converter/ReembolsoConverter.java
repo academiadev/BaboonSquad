@@ -15,7 +15,7 @@ public class ReembolsoConverter implements Converter<Reembolso, ReembolsoDTO> {
 		dto.setNome(entity.getNome());
 		dto.setCategoria(entity.getCategoria().getDescricao());
 		dto.setStatus(entity.getStatus().getDescricao());
-		dto.setPessoaNome(entity.getUsuario().getNome());
+		dto.setPessoaNome(entity.getUsuario().getName());
 		dto.setEmail(entity.getUsuario().getEmail());
 		dto.setValor(entity.getValor().toString());
 		return dto;
