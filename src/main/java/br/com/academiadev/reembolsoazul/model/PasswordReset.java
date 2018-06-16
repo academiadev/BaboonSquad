@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Data
 @Entity
-public class RedefinePassword {
+public class PasswordReset {
 
 	@Id
 	@Column

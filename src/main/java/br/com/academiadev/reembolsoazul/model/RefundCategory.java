@@ -1,6 +1,6 @@
 package br.com.academiadev.reembolsoazul.model;
 
-public enum CategoriaReembolso {
+public enum RefundCategory {
 	
 	OUTROS(0, "Outros"),
 	HOSPEDAGEM(1, "Hospedagem"), 
@@ -10,7 +10,7 @@ public enum CategoriaReembolso {
 	private Integer id;
 	private String descricao;
 	
-	CategoriaReembolso(Integer id, String descricao) {
+	RefundCategory(Integer id, String descricao) {
 		this.id = id;
 		this.descricao = descricao;
 		

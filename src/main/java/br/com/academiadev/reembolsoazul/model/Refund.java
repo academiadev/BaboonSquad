@@ -1,30 +1,24 @@
 package br.com.academiadev.reembolsoazul.model;
 
 import java.io.Serializable;
-<<<<<<< HEAD
-=======
 import java.math.BigDecimal;
 import java.time.LocalDate;
->>>>>>> 73ff43ad8cd4c74d41f33d043578cef2dc63a516
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
-<<<<<<< HEAD
-=======
-@Data
->>>>>>> 73ff43ad8cd4c74d41f33d043578cef2dc63a516
 @Entity
-@Table(name = "reembolsos")
+@Table(name = "refund")
 @Data
-public class Reembolso implements Serializable {
+public class Refund implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -33,22 +27,15 @@ public class Reembolso implements Serializable {
 	private Long id;
 	@Column
 	@NotNull
-	private String nome;
+	private String name;
 	@Column
-	private CategoriaReembolso categoria;
+	private RefundCategory category;
 	@Column
-	private StatusReembolso status;
+	private RefundStatus status;
 	@Column 
-	private LocalDate data;
+	private LocalDate date;
 	@Column
-	private BigDecimal valor;
-	@Column 
-	@NotNull
-<<<<<<< HEAD
-	private User usuario;
-
-
-=======
-	private Pessoa usuario;
->>>>>>> 73ff43ad8cd4c74d41f33d043578cef2dc63a516
+	private BigDecimal value;
+	@ManyToOne
+	private User user;
 }

@@ -10,7 +10,7 @@ import br.com.academiadev.reembolsoazul.model.User;
 public class UserConverter implements Converter<User, UserDTO>{
 
 	@Autowired
-	private CompanyConverter empresaConverter;
+	private CompanyConverter companyConverter;
 	
 	@Override
 	public UserDTO toDTO(User entity) {
@@ -18,18 +18,18 @@ public class UserConverter implements Converter<User, UserDTO>{
 		dto.setEmail(entity.getEmail());
 		dto.setName(entity.getName());
 		dto.setPassword(entity.getPassword());
-		dto.setCompany(empresaConverter.toDTO(entity.getCompany()));
+		dto.setCompany(companyConverter.toDTO(entity.getCompany()));
 		return dto;
 	}
 
 	@Override
-	public User toEntity(UserDTO dto) {
-		User pessoa = new User();
-		pessoa.setEmail(dto.getEmail());
-		pessoa.setName(dto.getName());
-		pessoa.setPassword(dto.getPassword());
-		pessoa.setCompany(empresaConverter.toEntity(dto.getCompany()));
-		return pessoa;
+	public User toEntity(UserDTO userDto) {
+		User user = new User();
+		user.setEmail(userDto.getEmail());
+		user.setName(userDto.getName());
+		user.setPassword(userDto.getPassword());
+		user.setCompany(companyConverter.toEntity(userDto.getCompany()));
+		return user;
 	}
 
 }

@@ -26,13 +26,13 @@ import br.com.academiadev.reembolsoazul.common.DeviceProvider;
 import br.com.academiadev.reembolsoazul.config.jwt.TokenHelper;
 import br.com.academiadev.reembolsoazul.dto.LoginDTO;
 import br.com.academiadev.reembolsoazul.dto.TokenDTO;
-import br.com.academiadev.reembolsoazul.dto.TrocaSenhaDTO;
+import br.com.academiadev.reembolsoazul.dto.PasswordResetDTO;
 import br.com.academiadev.reembolsoazul.model.User;
 import br.com.academiadev.reembolsoazul.service.CustomUserDetailsService;
 
 @RestController
 @RequestMapping(value = "/auth", produces = MediaType.APPLICATION_JSON_VALUE)
-public class AutenticacaoController {
+public class AuthtnticationController {
 
 	@Autowired
 	private TokenHelper tokenHelper;
@@ -93,7 +93,7 @@ public class AutenticacaoController {
 
 	@RequestMapping(value = "/change-password", method = RequestMethod.POST)
 	@PreAuthorize("hasRole('USER')")
-	public ResponseEntity<?> trocarSenha(@RequestBody TrocaSenhaDTO trocaSenhaDTO) {
+	public ResponseEntity<?> trocarSenha(@RequestBody PasswordResetDTO trocaSenhaDTO) {
 		userDetailsService.trocarSenha(trocaSenhaDTO.newPassword);
 		Map<String, String> result = new HashMap<>();
 		result.put("result", "success");

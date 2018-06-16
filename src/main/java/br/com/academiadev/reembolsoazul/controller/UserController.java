@@ -12,15 +12,15 @@ import br.com.academiadev.reembolsoazul.service.UserService;
 
 @RestController
 @RequestMapping("/pessoa")
-public class PessoaController {
+public class UserController {
 	
 	@Autowired
 	public UserService userService;
 
 	@PostMapping(value = "/gravar")
-	public ResponseEntity<?> cadastrar(@RequestBody UserDTO pessoaDTO) {
-		userService.cadastrar(pessoaDTO);
-		return ResponseEntity.ok(pessoaDTO);
+	public ResponseEntity<?> cadastrar(@RequestBody UserDTO userDTO) {
+		userService.cadastrar(userDTO);
+		return ResponseEntity.ok(userDTO);
 	}
 	
 	@PostMapping(value ="/alterar")

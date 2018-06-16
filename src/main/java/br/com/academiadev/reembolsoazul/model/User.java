@@ -47,15 +47,15 @@ public class User implements UserDetails {
 	@ManyToOne
 	private Company company;
 
-	@OneToMany(mappedBy = "usuario")
-	private List<Reembolso> refund;
+	@OneToMany(mappedBy = "user")
+	private List<Refund> refund;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "usuario_autorizacao", joinColumns = @JoinColumn(name = "pessoa_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "autorizacao_id", referencedColumnName = "id"))
-	private List<Autorizacao> authorization;
+	@JoinTable(name = "user_authorization", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "authorization_id", referencedColumnName = "id"))
+	private List<Authority> authorization;
 	
 	@OneToMany(mappedBy = "user")
-	private List<RedefinePassword> redefinePassword;
+	private List<PasswordReset> passwordReset;
 	
 	
 	@Override

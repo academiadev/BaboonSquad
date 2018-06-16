@@ -20,7 +20,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import br.com.academiadev.reembolsoazul.config.jwt.ApiPasswordEncoder;
-import br.com.academiadev.reembolsoazul.config.jwt.AutenticacaoRestListener;
+import br.com.academiadev.reembolsoazul.config.jwt.AuthenticationRestListener;
 import br.com.academiadev.reembolsoazul.config.jwt.TokenFilter;
 import br.com.academiadev.reembolsoazul.config.jwt.TokenHelper;
 import br.com.academiadev.reembolsoazul.service.CustomUserDetailsService;
@@ -40,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	private CustomUserDetailsService jwtUserDetailsService;
 
 	@Autowired
-	private AutenticacaoRestListener restAuthenticationEntryPoint;
+	private AuthenticationRestListener restAuthenticationEntryPoint;
 
 	@Bean
 	@Override

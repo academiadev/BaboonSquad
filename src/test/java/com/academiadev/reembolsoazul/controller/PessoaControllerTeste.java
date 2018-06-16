@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import br.com.academiadev.reembolsoazul.controller.PessoaController;
+import br.com.academiadev.reembolsoazul.controller.UserController;
 import br.com.academiadev.reembolsoazul.dto.CompanyDTO;
 import br.com.academiadev.reembolsoazul.dto.UserDTO;
 import br.com.academiadev.reembolsoazul.service.EmailService;
@@ -16,7 +16,7 @@ import br.com.academiadev.reembolsoazul.service.EmailService;
 public class PessoaControllerTeste {
 
 	@Autowired
-	private PessoaController pessoaController;
+	private UserController pessoaController;
 	
 	@Autowired
 	private EmailService emailService;
