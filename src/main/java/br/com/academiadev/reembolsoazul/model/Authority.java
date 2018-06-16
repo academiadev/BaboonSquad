@@ -16,11 +16,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "autorizacoes")
+@Table(name = "authority")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Autorizacao implements GrantedAuthority {
+public class Authority implements GrantedAuthority {
 
 	private static final long serialVersionUID = 1L;
 
@@ -30,21 +30,21 @@ public class Autorizacao implements GrantedAuthority {
 	private Long id;
 
 	@Column
-	private String nome;
+	private String name;
 
-	public Autorizacao(String name) {
+	public Authority(String name) {
 		super();
-		this.nome = name;
+		this.name = name;
 	}
 
 	@Override
 	public String getAuthority() {
-		return nome;
+		return name;
 	}
 
 	@JsonIgnore
 	public String getNome() {
-		return nome;
+		return name;
 	}
 
 	@JsonIgnore

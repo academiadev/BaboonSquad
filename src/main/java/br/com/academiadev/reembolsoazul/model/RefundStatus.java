@@ -1,6 +1,6 @@
 package br.com.academiadev.reembolsoazul.model;
 
-public enum StatusReembolso {
+public enum RefundStatus {
 	APROVADO(0, "Aprovado"),
 	REPROVADO(1, "Reprovado"),
 	AGUARDANDO(2, "Aguardando Avaliacao");
@@ -8,7 +8,7 @@ public enum StatusReembolso {
 	private Integer id;
 	private String descricao;
 	
-	StatusReembolso(Integer id, String descricao){
+	RefundStatus(Integer id, String descricao){
 		this.id = id;
 		this.descricao = descricao;
 	}

@@ -10,5 +10,5 @@ public class UserDTO {
 	private String password;
 	private Integer typePermission;
 	private CompanyDTO company;
-	
 }
+

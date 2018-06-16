@@ -9,16 +9,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
-
 @Entity
-@Table(name = "reembolsos")
+@Table(name = "refund")
 @Data
-public class Reembolso implements Serializable {
+public class Refund implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -27,18 +27,15 @@ public class Reembolso implements Serializable {
 	private Long id;
 	@Column
 	@NotNull
-	private String nome;
+	private String name;
 	@Column
-	private CategoriaReembolso categoria;
+	private RefundCategory category;
 	@Column
-	private StatusReembolso status;
+	private RefundStatus status;
 	@Column 
-	private LocalDate data;
+	private LocalDate date;
 	@Column
-	private BigDecimal valor;
-	@Column 
-	@NotNull
-	private User usuario;
-
-
+	private BigDecimal value;
+	@ManyToOne
+	private User user;
 }

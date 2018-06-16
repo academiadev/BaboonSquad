@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.academiadev.reembolsoazul.dto.ReembolsoDTO;
-import br.com.academiadev.reembolsoazul.service.ReembolsoService;
+import br.com.academiadev.reembolsoazul.dto.RefundDTO;
+import br.com.academiadev.reembolsoazul.service.RefundService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -20,22 +20,22 @@ import io.swagger.annotations.ApiResponses;
 @Api("Reembolso")
 @RestController
 @RequestMapping("/reembolso")
-public class ReembolsoController {
+public class RefundController {
 
 	@Autowired
-	private ReembolsoService reembolsoService;
+	private RefundService reembolsoService;
 
 	@ApiOperation(value = "Cadastra um reembolso")
 	@ApiResponses(value = { //
 			@ApiResponse(code = 201, message = "Empresa cadastrada com sucesso") //
 	})
 	@PostMapping(value = "/")
-	public ResponseEntity<ReembolsoDTO> PostReembolso(@RequestBody ReembolsoDTO reembolsoDto) {
+	public ResponseEntity<RefundDTO> PostReembolso(@RequestBody RefundDTO reembolsoDto) {
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	@PostMapping("/listaReembolsosCategoria")
-	public List<ReembolsoDTO> listaReembolsosCategoria() {
-		List<ReembolsoDTO> listReembolsoDTO = reembolsoService.GetAllReembolso();
+	public List<RefundDTO> listaReembolsosCategoria() {
+		List<RefundDTO> listReembolsoDTO = reembolsoService.GetAllReembolso();
 		return listReembolsoDTO;
 	}
 }

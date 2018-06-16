@@ -15,11 +15,11 @@ public class CompanyService {
 	@Autowired
 	private CompanyRepository companyRepository;
 	
-	public Company findByCodigo(Integer codeCompany) {
+	public Company findByCode(Integer codeCompany) {
 		return companyRepository.findByCode(codeCompany);
 	}
 	
-	public Boolean existsByCodigo(Integer codeCompany) {
+	public Boolean existsByCode(Integer codeCompany) {
 		return companyRepository.existsByCode(codeCompany);
 	}
 	

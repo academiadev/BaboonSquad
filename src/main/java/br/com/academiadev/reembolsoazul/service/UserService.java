@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import br.com.academiadev.reembolsoazul.converter.UserConverter;
 import br.com.academiadev.reembolsoazul.dto.UserDTO;
 import br.com.academiadev.reembolsoazul.exception.EmailCadastraExcption;
-import br.com.academiadev.reembolsoazul.model.Autorizacao;
-import br.com.academiadev.reembolsoazul.model.TipoPermissao;
+import br.com.academiadev.reembolsoazul.model.Authority;
+import br.com.academiadev.reembolsoazul.model.PermissionType;
 import br.com.academiadev.reembolsoazul.model.User;
 import br.com.academiadev.reembolsoazul.repository.UserRepository;
 
@@ -19,7 +19,7 @@ import br.com.academiadev.reembolsoazul.repository.UserRepository;
 public class UserService {
 
 	@Autowired
-	private UserConverter pessoaConverter;
+	private UserConverter userConverter;
 
 	@Autowired
 	private CompanyService companyService;
@@ -31,34 +31,34 @@ public class UserService {
 	private UserRepository userRepository;
 
 	@Autowired
-	private AutorizacaoService autorizacaoService;
+	private AuthorityService authorityService;
 
 	public void cadastrar(UserDTO userDTO) {
-		User pessoa = pessoaConverter.toEntity(userDTO);
-		if(userRepository.findByEmail(pessoa.getEmail())!=null) 
+		User user = userConverter.toEntity(userDTO);
+		if(userRepository.findByEmail(user.getEmail())!=null) 
 			throw new EmailCadastraExcption();
-		pessoa.setPassword(passwordEncoder.encode(pessoa.getPassword()));
-		pessoa.setAuthorization(getAutorizacao(userDTO.getTypePermission()));
-		if(userDTO.getTypePermission() == TipoPermissao.ADMIN.getId()) {
-			companyService.saveCompany(pessoa);
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		user.setAuthorization(getAutorizacao(userDTO.getTypePermission()));
+		if(userDTO.getTypePermission() == PermissionType.ADMIN.getId()) {
+			companyService.saveCompany(user);
 		}else {
-			setarEmpresa(pessoa);
+			setarEmpresa(user);
 		}
-		userRepository.save(pessoa);
+		userRepository.save(user);
 	}
 
-	private List<Autorizacao> getAutorizacao(Integer id) {
-		List<Autorizacao> autorizacoes = new ArrayList<>();
-		Autorizacao autorizacao = autorizacaoService.findById(Long.valueOf(id));
-		if (autorizacao.getNome().equals(TipoPermissao.ADMIN.getDescricao())) {
-			autorizacoes.add(new Autorizacao(Long.valueOf(TipoPermissao.USER.getId()) ,TipoPermissao.USER.getDescricao()));
+	private List<Authority> getAutorizacao(Integer id) {
+		List<Authority> autorizacoes = new ArrayList<>();
+		Authority autorizacao = authorityService.findById(Long.valueOf(id));
+		if (autorizacao.getNome().equals(PermissionType.ADMIN.getDescription())) {
+			autorizacoes.add(new Authority(Long.valueOf(PermissionType.USER.getId()) ,PermissionType.USER.getDescription()));
 		}
 		autorizacoes.add(autorizacao);
 		return autorizacoes;
 	}
 
 	private User setarEmpresa(User pessoa) {
-		pessoa.setCompany(companyService.findByCodigo(pessoa.getCompany().getCode()));
+		pessoa.setCompany(companyService.findByCode(pessoa.getCompany().getCode()));
 		return pessoa;
 	}
 

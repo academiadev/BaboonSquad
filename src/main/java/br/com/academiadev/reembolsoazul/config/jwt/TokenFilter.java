@@ -32,7 +32,7 @@ public class TokenFilter extends OncePerRequestFilter {
 			if (usuarioDoToken != null) {
 				UserDetails usuario = userDetailsService.loadUserByUsername(usuarioDoToken);
 				if (tokenHelper.validarToken(token, usuario)) {
-					SecurityContextHolder.getContext().setAuthentication(new AutenticacaoAutorizada(usuario, token));
+					SecurityContextHolder.getContext().setAuthentication(new AuthenticationToken(usuario, token));
 				}
 			}
 		}

@@ -10,22 +10,22 @@ public class CompanyConverter implements Converter<Company, CompanyDTO> {
 
 	@Override
 	public CompanyDTO toDTO(Company entity) {
-		CompanyDTO empresaDTO = new CompanyDTO();
-		empresaDTO.setCode(entity.getCode());
-		empresaDTO.setName(entity.getName());
-		return empresaDTO;
+		CompanyDTO companyDTO = new CompanyDTO();
+		companyDTO.setCode(entity.getCode());
+		companyDTO.setName(entity.getName());
+		return companyDTO;
 	}
 
 	@Override
-	public Company toEntity(CompanyDTO dto) {
-		Company empresa = new Company();
+	public Company toEntity(CompanyDTO companyDto) {
+		Company company = new Company();
 
-		if (dto.getName() != null) {
-			empresa.setName(dto.getName());
+		if (companyDto.getName() != null) {
+			company.setName(companyDto.getName());
 		} else {
-			empresa.setCode(dto.getCode());
+			company.setCode(companyDto.getCode());
 		}
-		return empresa;
+		return company;
 	}
 
 }
