@@ -18,9 +18,6 @@ public class PessoaControllerTeste {
 	@Autowired
 	private PessoaController pessoaController;
 	
-	@Autowired
-	private EmailService emailService;
-	
 	@Test
 	public void testaGravarAdmin() {
 		CompanyDTO empresaDTO = new CompanyDTO();
@@ -34,7 +31,6 @@ public class PessoaControllerTeste {
 		pessoaDTO.setCompany(empresaDTO);
 		pessoaController.cadastrar(pessoaDTO);
 		
-		emailService.enviar();
 	}
 	
 	@Test

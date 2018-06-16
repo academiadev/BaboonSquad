@@ -28,14 +28,14 @@ public class UserService {
 	private PasswordEncoder passwordEncoder;
 
 	@Autowired
-	private UserRepository pessoaRepository;
+	private UserRepository userRepository;
 
 	@Autowired
 	private AutorizacaoService autorizacaoService;
 
 	public void cadastrar(UserDTO userDTO) {
 		User pessoa = pessoaConverter.toEntity(userDTO);
-		if(pessoaRepository.findByEmail(pessoa.getEmail())!=null) 
+		if(userRepository.findByEmail(pessoa.getEmail())!=null) 
 			throw new EmailCadastraExcption();
 		pessoa.setPassword(passwordEncoder.encode(pessoa.getPassword()));
 		pessoa.setAuthorization(getAutorizacao(userDTO.getTypePermission()));
@@ -44,7 +44,7 @@ public class UserService {
 		}else {
 			setarEmpresa(pessoa);
 		}
-		pessoaRepository.save(pessoa);
+		userRepository.save(pessoa);
 	}
 
 	private List<Autorizacao> getAutorizacao(Integer id) {
@@ -61,6 +61,11 @@ public class UserService {
 		pessoa.setCompany(companyService.findByCodigo(pessoa.getCompany().getCode()));
 		return pessoa;
 	}
+
+	public User findByEmail(String email) {
+		return userRepository.findByEmail(email);
+	}
+	
 	
 	
 }
