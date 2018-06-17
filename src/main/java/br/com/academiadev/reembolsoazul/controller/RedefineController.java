@@ -30,7 +30,7 @@ public class RedefineController {
 	@ApiOperation(value = "Verificação visualização")
 	@ApiResponses(value = { //
 			@ApiResponse(code = 200, message = "Primeira visualização"), //
-			@ApiResponse(code = 204, message = "Já outra visualização"), //
+			@ApiResponse(code = 401, message = "Já visualizou"), //
 	})
 	@GetMapping("/new/{code}")
 	public void viewUrl(@PathVariable Long code) {
