@@ -48,19 +48,24 @@ public class UserService {
 	}
 
 	private List<Authority> getAutorizacao(Integer id) {
-		List<Authority> authorityList = new ArrayList<>();
-		Authority authority = authorityService.findById(Long.valueOf(id));
-		if (authority.getNome().equals(PermissionType.ADMIN.getDescription())) {
-			authorityList.add(new Authority(Long.valueOf(PermissionType.USER.getId()) ,PermissionType.USER.getDescription()));
+		List<Authority> autorizacoes = new ArrayList<>();
+		Authority autorizacao = authorityService.findById(Long.valueOf(id));
+		if (autorizacao.getNome().equals(PermissionType.ADMIN.getDescription())) {
+			autorizacoes.add(new Authority(Long.valueOf(PermissionType.USER.getId()) ,PermissionType.USER.getDescription()));
 		}
-		authorityList.add(authority);
-		return authorityList;
+		autorizacoes.add(autorizacao);
+		return autorizacoes;
 	}
 
-	private User setarEmpresa(User user) {
-		user.setCompany(companyService.findByCode(user.getCompany().getCode()));
-		return user;
+	private User setarEmpresa(User pessoa) {
+		pessoa.setCompany(companyService.findByCode(pessoa.getCompany().getCode()));
+		return pessoa;
 	}
+
+	public User findByEmail(String email) {
+		return userRepository.findByEmail(email);
+	}
+	
 	
 	public User GetUserByEmail(String email) {
 		return userRepository.findByEmail(email);

@@ -55,7 +55,7 @@ public class User implements UserDetails {
 	private List<Authority> authorization;
 	
 	@OneToMany(mappedBy = "user")
-	private List<PasswordReset> passwordReset;
+	private List<RedefinePassword> redefinePassword;
 	
 	
 	@Override

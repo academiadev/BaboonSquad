@@ -78,7 +78,6 @@ public class TokenHelper extends AbstractTokenHelper {
 	public String gerarToken(User user, Device device) {
 		String audience = generateAudience(device);
 		
-		
 		Map<String, Object> map = extracted(user);
 
 		return Jwts.builder()
