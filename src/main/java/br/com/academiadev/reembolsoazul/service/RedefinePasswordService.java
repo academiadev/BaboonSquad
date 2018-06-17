@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.academiadev.reembolsoazul.config.StructureEmail;
+import br.com.academiadev.reembolsoazul.dto.PasswordResetDTO;
 import br.com.academiadev.reembolsoazul.dto.RedefinePasswordDTO;
 import br.com.academiadev.reembolsoazul.model.RedefinePassword;
 import br.com.academiadev.reembolsoazul.model.User;
@@ -22,8 +23,8 @@ public class RedefinePasswordService {
 
 	@Autowired
 	private EmailService emailService;
-
-	public void redefinePassword(RedefinePasswordDTO redefinePasswordDTO) {
+	
+	public void requestRedefinePassword(RedefinePasswordDTO redefinePasswordDTO) {
 		User user = new User();
 		user = userService.findByEmail(redefinePasswordDTO.getEmail());
 		if (user != null) {
@@ -43,9 +44,22 @@ public class RedefinePasswordService {
 	
 	public void alterUsed(Long code) {
 		RedefinePassword redefinePassword = new RedefinePassword();
-		redefinePasswordRepository.findByCode(code);
+		redefinePassword = redefinePasswordRepository.findByCode(code);
 		redefinePassword.setUsed(true);
 		redefinePasswordRepository.save(redefinePassword);
+	}
+	
+	public void checkRedefinePassword(Long code) {
+		if(redefinePasswordRepository.findByCode(code)!=null)
+			alterUsed(code);
+		}
+
+	public void redefinePassword(PasswordResetDTO passwordResetDTO) {
+		User user = new User();
+		user = userService.findByCodeRedefinePassword(passwordResetDTO.getCode());
+		user.setPassword(userService.encode(passwordResetDTO.getNewPassword()));
+		userService.alterUser(user);
+	
 	}
 
 }

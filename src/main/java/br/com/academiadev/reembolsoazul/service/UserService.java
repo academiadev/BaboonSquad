@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.academiadev.reembolsoazul.converter.UserConverter;
 import br.com.academiadev.reembolsoazul.dto.UserDTO;
-import br.com.academiadev.reembolsoazul.exception.EmailCadastraExcption;
+import br.com.academiadev.reembolsoazul.exception.EmailCadastraExecption;
 import br.com.academiadev.reembolsoazul.model.Authority;
 import br.com.academiadev.reembolsoazul.model.PermissionType;
 import br.com.academiadev.reembolsoazul.model.User;
@@ -36,9 +36,9 @@ public class UserService {
 	public void cadastrar(UserDTO userDTO) {
 		User user = userConverter.toEntity(userDTO);
 		if(userRepository.findByEmail(user.getEmail())!=null) 
-			throw new EmailCadastraExcption();
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
-		user.setAuthorization(getAutorizacao(userDTO.getTypePermission()));
+			throw new EmailCadastraExecption();
+		user.setPassword(encode(userDTO.getPassword()));
+		user.setAuthorization(definedAutorizacao(userDTO.getTypePermission()));
 		if(userDTO.getTypePermission() == PermissionType.ADMIN.getId()) {
 			companyService.saveCompany(user);
 		}else {
@@ -47,7 +47,7 @@ public class UserService {
 		userRepository.save(user);
 	}
 
-	private List<Authority> getAutorizacao(Integer id) {
+	private List<Authority> definedAutorizacao(Integer id) {
 		List<Authority> autorizacoes = new ArrayList<>();
 		Authority autorizacao = authorityService.findById(Long.valueOf(id));
 		if (autorizacao.getNome().equals(PermissionType.ADMIN.getDescription())) {
@@ -57,15 +57,26 @@ public class UserService {
 		return autorizacoes;
 	}
 
-	private User setarEmpresa(User pessoa) {
-		pessoa.setCompany(companyService.findByCode(pessoa.getCompany().getCode()));
-		return pessoa;
+	private User setarEmpresa(User user) {
+		user.setCompany(companyService.findByCode(user.getCompany().getCode()));
+		return user;
 	}
 
 	public User findByEmail(String email) {
 		return userRepository.findByEmail(email);
 	}
 	
+	public User findByCodeRedefinePassword(Long code) {
+		return userRepository.findByRedefinePassword_code(code);
+	}
+	
+	public User alterUser(User user) {
+		return userRepository.save(user);
+	}
+	
+	public String encode(String password) {
+		return passwordEncoder.encode(password);
+	}
 	
 	
 }
