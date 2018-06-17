@@ -25,14 +25,15 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.academiadev.reembolsoazul.common.DeviceProvider;
 import br.com.academiadev.reembolsoazul.config.jwt.TokenHelper;
 import br.com.academiadev.reembolsoazul.dto.LoginDTO;
-import br.com.academiadev.reembolsoazul.dto.TokenDTO;
 import br.com.academiadev.reembolsoazul.dto.PasswordResetDTO;
+import br.com.academiadev.reembolsoazul.dto.TokenDTO;
 import br.com.academiadev.reembolsoazul.model.User;
 import br.com.academiadev.reembolsoazul.service.CustomUserDetailsService;
+import br.com.academiadev.reembolsoazul.service.UserService;
 
 @RestController
 @RequestMapping(value = "/auth", produces = MediaType.APPLICATION_JSON_VALUE)
-public class AuthtnticationController {
+public class AuthenticationController {
 
 	@Autowired
 	private TokenHelper tokenHelper;
@@ -45,13 +46,17 @@ public class AuthtnticationController {
 
 	@Autowired
 	private DeviceProvider deviceProvider;
+	
+	@Autowired
+	private UserService userService;
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ResponseEntity<?> login(@RequestBody LoginDTO authenticationRequest, HttpServletResponse response, Device dispositivo) throws Exception {
-		final Authentication autenticacao = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(), authenticationRequest.getPassword()));
-		SecurityContextHolder.getContext().setAuthentication(autenticacao);
-		User usuario = (User) autenticacao.getPrincipal();
-		String token = tokenHelper.gerarToken(usuario.getUsername(), dispositivo);
+		
+		final Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(), authenticationRequest.getPassword()));
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		User user = userService.GetUserByEmail(authenticationRequest.getEmail());
+		String token = tokenHelper.gerarToken(user, dispositivo);
 		int expiresIn = tokenHelper.getExpiredIn(dispositivo);
 		return ResponseEntity.ok(new TokenDTO(token, Long.valueOf(expiresIn)));
 	}
