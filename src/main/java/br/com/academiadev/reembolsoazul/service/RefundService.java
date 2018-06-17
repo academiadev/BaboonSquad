@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.academiadev.reembolsoazul.converter.RefundConverter;
+import br.com.academiadev.reembolsoazul.converter.RefundExpenseConverter;
 import br.com.academiadev.reembolsoazul.dto.RefundDTO;
+import br.com.academiadev.reembolsoazul.dto.RefundExpenseDTO;
 import br.com.academiadev.reembolsoazul.model.Refund;
 import br.com.academiadev.reembolsoazul.repository.RefundRepository;
 
@@ -16,6 +18,8 @@ public class RefundService {
 
 	@Autowired
 	private RefundConverter refundConverter;
+	@Autowired
+	private RefundExpenseConverter refundExpenseConverter;
 
 	@Autowired
 	private RefundRepository refundRepository;
@@ -32,9 +36,9 @@ public class RefundService {
 		return refundDto;
 	}
 
-	public List<RefundDTO> GetAllReembolso() {
+	public List<RefundExpenseDTO> GetAllReembolso() {
 		List<Refund> refund = (List<Refund>) refundRepository.findAll();
-		List<RefundDTO> dtos = refund.stream().map(refundConverter::toDTO).collect(Collectors.toList());
+		List<RefundExpenseDTO> dtos = refund.stream().map(refundExpenseConverter::toDTO).collect(Collectors.toList());
 		return dtos;
 	}
 
