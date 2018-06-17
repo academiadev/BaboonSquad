@@ -1,6 +1,9 @@
 package br.com.academiadev.reembolsoazul.config.jwt;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,6 +11,7 @@ import org.springframework.mobile.device.Device;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import br.com.academiadev.reembolsoazul.model.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 
@@ -71,11 +75,28 @@ public class TokenHelper extends AbstractTokenHelper {
 		return tokenAtualizado;
 	}
 
-	public String gerarToken(String username, Device device) {
+	public String gerarToken(User user, Device device) {
 		String audience = generateAudience(device);
+		
+		Map<String, Object> map = extracted(user);
 
-		return Jwts.builder().setIssuer(APP_NAME).setSubject(username).setHeaderParam("email", "reembolso.azul.acad@gmail.com").setAudience(audience).setIssuedAt(timeProvider.toDate(timeProvider.getDataHoraAtual())).setExpiration(timeProvider.toDate(generateExpirationDate(device)))
+		return Jwts.builder()
+				.setIssuer(APP_NAME).setSubject(user.getEmail())
+				.setClaims(map)
+				.setAudience(audience)
+				.setIssuedAt(timeProvider.toDate(timeProvider.getDataHoraAtual()))
+				.setExpiration(timeProvider.toDate(generateExpirationDate(device)))
 				.signWith(SIGNATURE_ALGORITHM, SECRET).compact();
+	}
+
+	private Map<String, Object> extracted(User user) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("email", user.getEmail());
+		map.put("name", user.getName());
+		map.put("company", user.getCompany().getCode());
+		map.put("isAdmin", user.getAuthorities().stream().filter(Authorities -> 
+							Authorities.getAuthority().equals("ROLE_ADMIN")).collect(Collectors.toList()).size() > 0);
+		return map;
 	}
 
 	public int getExpiredIn(Device dispositivo) {

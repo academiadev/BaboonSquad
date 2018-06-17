@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import br.com.academiadev.reembolsoazul.dto.RefundDTO;
 import br.com.academiadev.reembolsoazul.model.Refund;
+import br.com.academiadev.reembolsoazul.util.Util;
 
 @Component
 public class RefundConverter implements Converter<Refund, RefundDTO> {
@@ -18,6 +19,7 @@ public class RefundConverter implements Converter<Refund, RefundDTO> {
 		dto.setUserName(entity.getUser().getName());
 		dto.setEmail(entity.getUser().getEmail());
 		dto.setValue(entity.getValue().toString());
+		dto.setDate(Util.dateToString(entity.getDate()));
 		return dto;
 	}
 

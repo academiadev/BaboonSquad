@@ -78,5 +78,9 @@ public class UserService {
 		return passwordEncoder.encode(password);
 	}
 	
+	public User GetUserByEmail(String email) {
+		return userRepository.findByEmail(email);
+	}
+	
 	
 }
