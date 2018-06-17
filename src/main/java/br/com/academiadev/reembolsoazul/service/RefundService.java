@@ -37,6 +37,7 @@ public class RefundService {
 	}
 
 	public List<RefundExpenseDTO> GetAllReembolso() {
+		//List<Refund> refund = (List<Refund>) refundRepository.findAllOrderBydate();
 		List<Refund> refund = (List<Refund>) refundRepository.findAll();
 		List<RefundExpenseDTO> dtos = refund.stream().map(refundExpenseConverter::toDTO).collect(Collectors.toList());
 		return dtos;

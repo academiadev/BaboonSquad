@@ -3,7 +3,7 @@ package br.com.academiadev.reembolsoazul.model;
 public enum RefundStatus {
 	APROVADO(0, "Aprovado"),
 	REPROVADO(1, "Reprovado"),
-	AGUARDANDO(2, "Aguardando Avaliacao");
+	AGUARDANDO(2, "Aguardando Avaliação");
 	
 	private Integer id;
 	private String descricao;
@@ -25,5 +25,4 @@ public enum RefundStatus {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
 }

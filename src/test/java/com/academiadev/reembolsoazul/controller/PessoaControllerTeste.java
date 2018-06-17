@@ -9,7 +9,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import br.com.academiadev.reembolsoazul.controller.UserController;
 import br.com.academiadev.reembolsoazul.dto.CompanyDTO;
 import br.com.academiadev.reembolsoazul.dto.UserDTO;
-import br.com.academiadev.reembolsoazul.service.EmailService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

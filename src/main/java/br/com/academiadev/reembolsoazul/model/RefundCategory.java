@@ -5,7 +5,7 @@ public enum RefundCategory {
 	OUTROS(0, "Outros"),
 	HOSPEDAGEM(1, "Hospedagem"), 
 	TRANSPORTE(2, "Transporte"), 
-	ALIMENTACAO(3, "Alimentacao");
+	ALIMENTACAO(3, "Alimentação");
 	
 	private Integer id;
 	private String descricao;
@@ -13,7 +13,6 @@ public enum RefundCategory {
 	RefundCategory(Integer id, String descricao) {
 		this.id = id;
 		this.descricao = descricao;
-		
 	}
 	
 	public Integer getId() {
@@ -31,5 +30,4 @@ public enum RefundCategory {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
 }
