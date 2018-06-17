@@ -34,7 +34,6 @@ public class Refund implements Serializable {
 	private RefundStatus status;
 	@Column 
 	private LocalDate date;
-
 	@Column
 	private BigDecimal value;
 	@ManyToOne

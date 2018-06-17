@@ -55,13 +55,13 @@ public class User implements UserDetails {
 	private List<Authority> authorization;
 	
 	@OneToMany(mappedBy = "user")
-	private List<PasswordReset> passwordReset;
+	private List<RedefinePassword> redefinePassword;
 	
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.authorization;
 	}
 
 	@Override
