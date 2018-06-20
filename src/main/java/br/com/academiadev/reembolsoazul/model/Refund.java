@@ -37,6 +37,7 @@ public class Refund implements Serializable {
 
 	@Column
 	private BigDecimal value;
+	
 	@ManyToOne
 	private User user;
 }

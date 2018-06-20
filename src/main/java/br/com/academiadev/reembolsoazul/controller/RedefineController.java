@@ -8,8 +8,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.academiadev.reembolsoazul.dto.PasswordResetDTO;
 import br.com.academiadev.reembolsoazul.dto.RedefinePasswordDTO;
 import br.com.academiadev.reembolsoazul.service.RedefinePasswordService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping("/password")
@@ -20,11 +24,22 @@ public class RedefineController {
 	
 	@PostMapping(value = "/request")
 	public void redefinePassword(@RequestBody RedefinePasswordDTO redefinePasswordDTO) {
-		redefinePasswordService.redefinePassword(redefinePasswordDTO);
+		redefinePasswordService.requestRedefinePassword(redefinePasswordDTO);
 	}
 	
+	@ApiOperation(value = "Verificação visualização")
+	@ApiResponses(value = { //
+			@ApiResponse(code = 200, message = "Primeira visualização"), //
+			@ApiResponse(code = 401, message = "Já visualizou"), //
+	})
 	@GetMapping("/new/{code}")
 	public void viewUrl(@PathVariable Long code) {
-		redefinePasswordService.alterUsed(code);
+		redefinePasswordService.checkRedefinePassword(code);
+	}
+	
+	@PostMapping(value = "/alter")
+	public void alterPassword(@RequestBody PasswordResetDTO passwordResetDTO) {
+		redefinePasswordService.redefinePassword(passwordResetDTO);
+		
 	}
 }
