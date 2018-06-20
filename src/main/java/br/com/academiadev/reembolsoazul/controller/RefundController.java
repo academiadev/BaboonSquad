@@ -1,6 +1,7 @@
 package br.com.academiadev.reembolsoazul.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -49,8 +50,7 @@ public class RefundController {
 			@ApiResponse(code = 200, message = "Lista de reembolsos") //
 	})
 	@GetMapping("/listaReembolsosCategoria")
-	public List<RefundExpenseDTO> listaReembolsosCategoria() {
-		List<RefundExpenseDTO> listReembolsoDTO = reembolsoService.GetAllReembolso();
-		return listReembolsoDTO;
+	public Map<String, List<RefundExpenseDTO>> listaReembolsosCategoria() {
+		return reembolsoService.getAllReembolso();
 	}
 }

@@ -7,7 +7,6 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import br.com.academiadev.reembolsoazul.model.Authority;
@@ -63,7 +62,7 @@ public class PayloadConfig implements ApplicationListener<ContextRefreshedEvent>
 		user.setName("Funcionário");
 		user.setEmail("teste@gmail.com");
 		user.setCompany(company);
-		user.setPassword("@A123");
+		user.setPassword("$2a$10$I3YQNzxkfIzpmapGr/TQc.R3hhOyZz.dbDU7..HMjIUpKMkOv5WsC");
 		
 		return userRepository.save(user);
 	}
