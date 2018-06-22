@@ -8,12 +8,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.academiadev.reembolsoazul.converter.UserConverter;
+import br.com.academiadev.reembolsoazul.dto.UserAlterDTO;
 import br.com.academiadev.reembolsoazul.dto.UserDTO;
-import br.com.academiadev.reembolsoazul.exception.EmailCadastraExecption;
+import br.com.academiadev.reembolsoazul.exception.EmailExecption;
 import br.com.academiadev.reembolsoazul.model.Authority;
 import br.com.academiadev.reembolsoazul.model.PermissionType;
 import br.com.academiadev.reembolsoazul.model.User;
 import br.com.academiadev.reembolsoazul.repository.UserRepository;
+import br.com.academiadev.reembolsoazul.util.Validation;
 
 @Service
 public class UserService {
@@ -32,11 +34,16 @@ public class UserService {
 
 	@Autowired
 	private AuthorityService authorityService;
+	
+	@Autowired
+	private Validation validation;
 
-	public void cadastrar(UserDTO userDTO) {
+	public void register(UserDTO userDTO) throws EmailExecption {
 		User user = userConverter.toEntity(userDTO);
+		if(validation.validaEmail(user.getEmail()))
+			throw new EmailExecption("Email incorreto.", "400");
 		if(userRepository.findByEmail(user.getEmail())!=null) 
-			throw new EmailCadastraExecption();
+			throw new EmailExecption("O email já está cadastrado", "400");
 		user.setPassword(encode(userDTO.getPassword()));
 		user.setAuthorization(definedAutorizacao(userDTO.getTypePermission()));
 		if(userDTO.getTypePermission() == PermissionType.ADMIN.getId()) {
@@ -45,6 +52,13 @@ public class UserService {
 			setarEmpresa(user);
 		}
 		userRepository.save(user);
+	}
+	
+	public void alterRegister(UserAlterDTO userAlterDTO) {
+		User user = findByEmail(userAlterDTO.getEmail());
+		user.setEmail(userAlterDTO.getNewEmail());
+		user.setName(userAlterDTO.getNome());
+		alterUser(user);
 	}
 
 	private List<Authority> definedAutorizacao(Integer id) {
@@ -78,9 +92,8 @@ public class UserService {
 		return passwordEncoder.encode(password);
 	}
 	
-	public User GetUserByEmail(String email) {
+	public User getUserByEmail(String email) {
 		return userRepository.findByEmail(email);
 	}
-	
 	
 }

@@ -55,7 +55,7 @@ public class AuthenticationController {
 		
 		final Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(), authenticationRequest.getPassword()));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-		User user = userService.GetUserByEmail(authenticationRequest.getEmail());
+		User user = userService.getUserByEmail(authenticationRequest.getEmail());
 		String token = tokenHelper.gerarToken(user, dispositivo);
 		int expiresIn = tokenHelper.getExpiredIn(dispositivo);
 		return ResponseEntity.ok(new TokenDTO(token, Long.valueOf(expiresIn)));

@@ -1,6 +1,7 @@
 package br.com.academiadev.reembolsoazul.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,8 +34,9 @@ public class RedefineController {
 			@ApiResponse(code = 401, message = "Já visualizou"), //
 	})
 	@GetMapping("/new/{code}")
-	public void viewUrl(@PathVariable Long code) {
-		redefinePasswordService.checkRedefinePassword(code);
+	public ResponseEntity<?> viewUrl(@RequestBody @PathVariable Long code) {
+		System.out.println(redefinePasswordService.checkRedefinePassword(code));
+		return ResponseEntity.ok(redefinePasswordService.checkRedefinePassword(code));
 	}
 	
 	@PostMapping(value = "/alter")

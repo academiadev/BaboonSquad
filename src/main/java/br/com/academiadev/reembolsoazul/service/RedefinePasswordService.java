@@ -49,10 +49,15 @@ public class RedefinePasswordService {
 		redefinePasswordRepository.save(redefinePassword);
 	}
 	
-	public void checkRedefinePassword(Long code) {
-		if(redefinePasswordRepository.findByCode(code)!=null)
+	public boolean checkRedefinePassword(Long code) {
+		RedefinePassword redefinePassword = new RedefinePassword();
+		redefinePassword = redefinePasswordRepository.findByCode(code);
+		if(redefinePassword!=null && redefinePassword.getUsed() == false) {
 			alterUsed(code);
+			return true;
 		}
+		return false;
+	}
 
 	public void redefinePassword(PasswordResetDTO passwordResetDTO) {
 		User user = new User();
