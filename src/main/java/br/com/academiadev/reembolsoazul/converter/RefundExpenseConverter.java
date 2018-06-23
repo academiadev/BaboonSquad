@@ -13,7 +13,6 @@ public class RefundExpenseConverter implements Converter<Refund, RefundExpenseDT
 	@Override
 	public RefundExpenseDTO toDTO(Refund entity) {
 		RefundExpenseDTO dto = new RefundExpenseDTO();
-		dto.setCategory(entity.getCategory().getDescricao());
 		dto.setValue(entity.getValue().toString());
 		dto.setDate(Util.dateToString(entity.getDate()).replace('/', '-'));
 		return dto;

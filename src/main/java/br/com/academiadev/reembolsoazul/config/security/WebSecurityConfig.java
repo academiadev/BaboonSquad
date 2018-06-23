@@ -65,6 +65,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()//
 				.authorizeRequests()//
 				.antMatchers("/auth/**").permitAll()
+				.antMatchers("/reembolso/**").permitAll()
 				.antMatchers("/pessoa/**").permitAll()//
 				.antMatchers("/password/**").permitAll()//
 				.anyRequest().authenticated().and()//
