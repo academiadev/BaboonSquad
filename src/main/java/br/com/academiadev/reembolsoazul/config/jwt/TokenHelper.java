@@ -81,7 +81,7 @@ public class TokenHelper extends AbstractTokenHelper {
 		Map<String, Object> map = extracted(user);
 
 		return Jwts.builder()
-				.setIssuer(APP_NAME).setSubject(user.getEmail())
+				.setIssuer(APP_NAME)
 				.setClaims(map)
 				.setAudience(audience)
 				.setIssuedAt(timeProvider.toDate(timeProvider.getDataHoraAtual()))
@@ -91,8 +91,9 @@ public class TokenHelper extends AbstractTokenHelper {
 
 	private Map<String, Object> extracted(User user) {
 		Map<String, Object> map = new HashMap<>();
-		map.put("email", user.getEmail());
-		map.put("name", user.getName());
+		map.put("sub", user.getEmail());
+		map.put("userId", user.getId());
+		map.put("user", user.getName());
 		map.put("company", user.getCompany().getCode());
 		map.put("isAdmin", user.getAuthorities().stream().filter(Authorities -> 
 							Authorities.getAuthority().equals("ROLE_ADMIN")).collect(Collectors.toList()).size() > 0);

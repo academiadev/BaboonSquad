@@ -68,7 +68,7 @@ public class PayloadConfig implements ApplicationListener<ContextRefreshedEvent>
 	}
 
 	private void payloadRefunds(User user) {
-		for (Long i = 0l; i < 200l; i++) {
+		for (Long i = 0l; i < 10l; i++) {
 			Refund refund = new Refund();
 			refund.setId(i);
 			refund.setCategory(RefundCategory.ALIMENTACAO);
@@ -81,7 +81,7 @@ public class PayloadConfig implements ApplicationListener<ContextRefreshedEvent>
 			refundRepository.save(refund);
 		}
 		
-		for (Long i = 200l; i < 400l; i++) {
+		for (Long i = 10l; i < 20l; i++) {
 			Refund refund = new Refund();
 			refund.setId(i);
 			refund.setCategory(RefundCategory.HOSPEDAGEM);
@@ -94,7 +94,7 @@ public class PayloadConfig implements ApplicationListener<ContextRefreshedEvent>
 			refundRepository.save(refund);
 		}
 		
-		for (Long i = 400l; i < 600l; i++) {
+		for (Long i = 20l; i < 30l; i++) {
 			Refund refund = new Refund();
 			refund.setId(i);
 			refund.setCategory(RefundCategory.TRANSPORTE);

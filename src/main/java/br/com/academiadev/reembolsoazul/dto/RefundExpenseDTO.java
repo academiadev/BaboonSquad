@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Data
 public class RefundExpenseDTO {
-	private String category;
 	private String date;
 	private String value;
 }
