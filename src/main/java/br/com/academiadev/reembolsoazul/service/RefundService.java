@@ -1,5 +1,6 @@
 package br.com.academiadev.reembolsoazul.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,10 +28,11 @@ public class RefundService {
 	@Autowired
 	private RefundRepository refundRepository;
 
-	public void postReembolso(RefundDTO refundDto) {
+	public RefundDTO postRefund(RefundDTO refundDto) throws ClassNotFoundException {
 		Refund refund = new Refund();
 		refund = refundConverter.toEntity(refundDto);
 		refundRepository.save(refund);
+		return refundDto;
 	}
 
 	public RefundDTO getReembolsoById(Long id) {
@@ -57,4 +59,26 @@ public class RefundService {
 		
 		return grouping;
 	}
+	
+	public RefundDTO putRefund(RefundDTO refundDto) throws ClassNotFoundException {
+		Refund refund = refundConverter.toEntity(refundDto);
+		refundRepository.save(refund);  
+		return refundDto;
+	}
+	
+	public void deleteRefund(Long refundId) {
+		refundRepository.delete(refundId); 
+		return;
+	}
+	
+	public List<RefundDTO> getAllRefundsByUser(Long userId) {
+		List<Refund> refundList = refundRepository.findByUser_Id(userId);
+		List<RefundDTO> refundDTOList = new ArrayList<>();
+		for (Refund refund : refundList) {
+			refundDTOList.add(refundConverter.toDTO(refund));
+		}
+
+		return refundDTOList;
+	}
+	
 }

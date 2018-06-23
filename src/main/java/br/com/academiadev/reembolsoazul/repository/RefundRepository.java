@@ -10,4 +10,6 @@ import br.com.academiadev.reembolsoazul.model.Refund;
 @Repository
 public interface RefundRepository extends CrudRepository<Refund, Long> {
 	public List<Refund> findAllByOrderByDateAsc();
+	
+	public List<Refund> findByUser_Id(Long user_id);
 }

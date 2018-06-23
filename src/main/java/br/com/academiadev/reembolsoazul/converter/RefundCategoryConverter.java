@@ -1,7 +1,10 @@
 package br.com.academiadev.reembolsoazul.converter;
 
+import org.springframework.stereotype.Component;
+
 import br.com.academiadev.reembolsoazul.model.RefundCategory;
 
+@Component
 public class RefundCategoryConverter implements EnumConverter <RefundCategory, Integer, String> {
 
 	@Override

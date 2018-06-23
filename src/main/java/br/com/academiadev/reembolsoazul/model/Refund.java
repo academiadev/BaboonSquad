@@ -40,4 +40,14 @@ public class Refund implements Serializable {
 	
 	@ManyToOne
 	private User user;
+	
+	public void setStatusById(Integer id) {
+		if(id==0) {
+			this.status = RefundStatus.APROVADO;
+		}else if (id == 1) {
+			this.status = RefundStatus.REPROVADO;
+		}else {
+			this.status = RefundStatus.AGUARDANDO;
+		}
+	}
 }
