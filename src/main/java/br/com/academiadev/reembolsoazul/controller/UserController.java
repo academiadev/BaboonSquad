@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.academiadev.reembolsoazul.dto.UserAlterDTO;
 import br.com.academiadev.reembolsoazul.dto.UserDTO;
+import br.com.academiadev.reembolsoazul.exception.CompanyExecption;
 import br.com.academiadev.reembolsoazul.exception.EmailExecption;
 import br.com.academiadev.reembolsoazul.service.UserService;
 
@@ -21,14 +22,15 @@ public class UserController {
 
 	
 	@PostMapping(value = "/gravar")
-	public ResponseEntity<?> register(@RequestBody UserDTO userDTO) throws EmailExecption {
+	public ResponseEntity<?> register(@RequestBody UserDTO userDTO) throws EmailExecption, CompanyExecption {
 		userService.register(userDTO);
 		return ResponseEntity.ok(userDTO);
 	}
 	
 	@PostMapping(value ="/alterar")
-	public void alterRegister(@RequestBody UserAlterDTO userAlterDTO ) {
+	public ResponseEntity<?> alterRegister(@RequestBody UserAlterDTO userAlterDTO ) {
 		userService.alterRegister(userAlterDTO);
+		return ResponseEntity.ok(userAlterDTO);
 	}
 	
 	

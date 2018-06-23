@@ -46,13 +46,13 @@ public class AuthenticationController {
 
 	@Autowired
 	private DeviceProvider deviceProvider;
-	
+
 	@Autowired
 	private UserService userService;
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ResponseEntity<?> login(@RequestBody LoginDTO authenticationRequest, HttpServletResponse response, Device dispositivo) throws Exception {
-		
+
 		final Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(), authenticationRequest.getPassword()));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		User user = userService.getUserByEmail(authenticationRequest.getEmail());

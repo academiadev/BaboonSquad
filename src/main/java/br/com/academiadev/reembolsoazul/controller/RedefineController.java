@@ -35,7 +35,6 @@ public class RedefineController {
 	})
 	@GetMapping("/new/{code}")
 	public ResponseEntity<?> viewUrl(@RequestBody @PathVariable Long code) {
-		System.out.println(redefinePasswordService.checkRedefinePassword(code));
 		return ResponseEntity.ok(redefinePasswordService.checkRedefinePassword(code));
 	}
 	

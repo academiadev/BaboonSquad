@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import br.com.academiadev.reembolsoazul.converter.UserConverter;
 import br.com.academiadev.reembolsoazul.dto.UserAlterDTO;
 import br.com.academiadev.reembolsoazul.dto.UserDTO;
+import br.com.academiadev.reembolsoazul.exception.CompanyExecption;
 import br.com.academiadev.reembolsoazul.exception.EmailExecption;
 import br.com.academiadev.reembolsoazul.model.Authority;
 import br.com.academiadev.reembolsoazul.model.PermissionType;
@@ -38,17 +39,21 @@ public class UserService {
 	@Autowired
 	private Validation validation;
 
-	public void register(UserDTO userDTO) throws EmailExecption {
+	public void register(UserDTO userDTO) throws EmailExecption, CompanyExecption {
 		User user = userConverter.toEntity(userDTO);
-		if(validation.validaEmail(user.getEmail()))
+		if(!validation.validEmail(user.getEmail()))
 			throw new EmailExecption("Email incorreto.", "400");
 		if(userRepository.findByEmail(user.getEmail())!=null) 
 			throw new EmailExecption("O email já está cadastrado", "400");
+		if(userDTO.getTypePermission() == PermissionType.USER.getId()) {
+			if(companyService.findByCode(user.getCompany().getCode())==null)
+				throw new CompanyExecption("Empresa inexistente", "400");
+		}
 		user.setPassword(encode(userDTO.getPassword()));
 		user.setAuthorization(definedAutorizacao(userDTO.getTypePermission()));
 		if(userDTO.getTypePermission() == PermissionType.ADMIN.getId()) {
 			companyService.saveCompany(user);
-		}else {
+		} else {
 			setarEmpresa(user);
 		}
 		userRepository.save(user);
@@ -57,7 +62,7 @@ public class UserService {
 	public void alterRegister(UserAlterDTO userAlterDTO) {
 		User user = findByEmail(userAlterDTO.getEmail());
 		user.setEmail(userAlterDTO.getNewEmail());
-		user.setName(userAlterDTO.getNome());
+		user.setName(userAlterDTO.getName());
 		alterUser(user);
 	}
 

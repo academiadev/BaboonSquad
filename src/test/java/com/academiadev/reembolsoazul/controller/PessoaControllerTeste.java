@@ -9,8 +9,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import br.com.academiadev.reembolsoazul.controller.UserController;
 import br.com.academiadev.reembolsoazul.dto.CompanyDTO;
 import br.com.academiadev.reembolsoazul.dto.UserDTO;
+import br.com.academiadev.reembolsoazul.exception.CompanyExecption;
 import br.com.academiadev.reembolsoazul.exception.EmailExecption;
-import br.com.academiadev.reembolsoazul.service.EmailService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -20,7 +20,7 @@ public class PessoaControllerTeste {
 	private UserController pessoaController;
 	
 	@Test
-	public void testaGravarAdmin() throws EmailExecption {
+	public void testaGravarAdmin() throws EmailExecption, CompanyExecption {
 		CompanyDTO empresaDTO = new CompanyDTO();
 		empresaDTO.setName("Empresa das Empresas");
 			
@@ -35,7 +35,7 @@ public class PessoaControllerTeste {
 	}
 	
 	@Test
-	public void testaGravarUser() throws EmailExecption {
+	public void testaGravarUser() throws EmailExecption, CompanyExecption {
 		CompanyDTO empresaDTO = new CompanyDTO();
 		empresaDTO.setCode(132131);
 			
