@@ -11,5 +11,6 @@ public class PasswordResetDTO {
 
 	public String newPassword;
 	public Long code;
+	public String emailUser;
 
 }

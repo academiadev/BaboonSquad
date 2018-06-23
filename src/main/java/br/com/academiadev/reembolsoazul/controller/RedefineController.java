@@ -41,6 +41,5 @@ public class RedefineController {
 	@PostMapping(value = "/alter")
 	public void alterPassword(@RequestBody PasswordResetDTO passwordResetDTO) {
 		redefinePasswordService.redefinePassword(passwordResetDTO);
-		
 	}
 }
