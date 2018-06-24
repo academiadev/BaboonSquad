@@ -41,8 +41,8 @@ public class RefundService {
 		return refundDto;
 	}
 
-	public Map<String, List<RefundExpenseDTO>> getAllReembolso() {
-		List<Refund> refunds = (List<Refund>) refundRepository.findAllByOrderByDateAsc();
+	public Map<String, List<RefundExpenseDTO>> getAllRefundsExpenseByUser(Long id) {
+		List<Refund> refunds = (List<Refund>) refundRepository.findByUser_Id(id);
 		return this.agroupingRefunds(refunds);
 	}
 

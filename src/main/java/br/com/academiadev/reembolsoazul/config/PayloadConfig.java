@@ -68,39 +68,37 @@ public class PayloadConfig implements ApplicationListener<ContextRefreshedEvent>
 	}
 
 	private void payloadRefunds(User user) {
-		for (Long i = 0l; i < 10l; i++) {
+		for (Long i = 0l; i < 100l; i++) {
 			Refund refund = new Refund();
-			refund.setId(i);
 			refund.setCategory(RefundCategory.ALIMENTACAO);
 			refund.setName("Teste " + i);
 			refund.setStatus(RefundStatus.AGUARDANDO);
-			refund.setValue(PayloadConfig.generateRandomBigDecimalFromRange(BigDecimal.ZERO, new BigDecimal(500)));
+			refund.setValue(PayloadConfig.generateRandomBigDecimalFromRange(BigDecimal.ZERO, new BigDecimal(20)));
 			refund.setDate(PayloadConfig.generateRandomDateFromYear(2017));
 			refund.setUser(user);
 		
 			refundRepository.save(refund);
 		}
 		
-		for (Long i = 10l; i < 20l; i++) {
+		for (Long i = 100l; i < 200l; i++) {
 			Refund refund = new Refund();
-			refund.setId(i);
 			refund.setCategory(RefundCategory.HOSPEDAGEM);
 			refund.setName("Teste " + i);
 			refund.setStatus(RefundStatus.AGUARDANDO);
-			refund.setValue(PayloadConfig.generateRandomBigDecimalFromRange(BigDecimal.ZERO, new BigDecimal(500)));
+			refund.setValue(PayloadConfig.generateRandomBigDecimalFromRange(BigDecimal.ZERO, new BigDecimal(20)));
 			refund.setDate(PayloadConfig.generateRandomDateFromYear(2017));
 			refund.setUser(user);
 			
 			refundRepository.save(refund);
 		}
 		
-		for (Long i = 20l; i < 30l; i++) {
+		for (Long i = 200l; i < 300l; i++) {
 			Refund refund = new Refund();
 			refund.setId(i);
 			refund.setCategory(RefundCategory.TRANSPORTE);
 			refund.setName("Teste " + i);
 			refund.setStatus(RefundStatus.AGUARDANDO);
-			refund.setValue(PayloadConfig.generateRandomBigDecimalFromRange(BigDecimal.ZERO, new BigDecimal(500)));
+			refund.setValue(PayloadConfig.generateRandomBigDecimalFromRange(BigDecimal.ZERO, new BigDecimal(20)));
 			refund.setDate(PayloadConfig.generateRandomDateFromYear(2017));
 			refund.setUser(user);
 			

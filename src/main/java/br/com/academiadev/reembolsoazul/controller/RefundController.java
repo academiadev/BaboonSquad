@@ -53,9 +53,9 @@ public class RefundController {
 	@ApiResponses(value = { //
 			@ApiResponse(code = 200, message = "Lista de reembolsos")
 	})
-	@GetMapping("/listaReembolsosCategoria")
-	public Map<String, List<RefundExpenseDTO>> listaReembolsosCategoria() {
-		return refundService.getAllReembolso();
+	@GetMapping("/listaReembolsosCategoria/{userId}")
+	public ResponseEntity<Map<String, List<RefundExpenseDTO>>> getAllRefundsExpenseByUser(@PathVariable Long userId) {
+		return new ResponseEntity<>(refundService.getAllRefundsExpenseByUser(userId), HttpStatus.OK);
 	}
 	
 	@ApiImplicitParams({
@@ -66,7 +66,7 @@ public class RefundController {
 			@ApiResponse(code = 200, message = "Lista de reembolsos por usuários")
 	})
 	@GetMapping("/usuario/{userIdStr}")
-	public ResponseEntity<List<RefundDTO>> getAllRefundsByUser(@PathVariable String userIdStr) {
+	public ResponseEntity<List<RefundDTO>> getAllRefundsByUser(@PathVariable Long userIdStr) {
 		Long userId = new Long(userIdStr);
 		return new ResponseEntity<>(refundService.getAllRefundsByUser(userId), HttpStatus.OK);
 	}

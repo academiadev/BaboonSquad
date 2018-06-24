@@ -14,7 +14,7 @@ public class Util {
 	}
 	
 	public static String dateToString(LocalDate date) {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		return date.format(formatter);
 	}
 	
