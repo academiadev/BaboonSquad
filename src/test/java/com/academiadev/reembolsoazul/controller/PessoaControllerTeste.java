@@ -26,7 +26,7 @@ public class PessoaControllerTeste {
 		empresaDTO.setName("Empresa das Empresas");
 			
 		UserDTO pessoaDTO = new UserDTO();
-		pessoaDTO.setEmail("Jao@acom");
+		pessoaDTO.setEmail("Jao@a.com");
 		pessoaDTO.setName("Jpones");
 		pessoaDTO.setPassword("aaaaaaaaaa");
 		pessoaDTO.setTypePermission(1);

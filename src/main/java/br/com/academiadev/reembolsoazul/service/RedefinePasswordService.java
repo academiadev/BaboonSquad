@@ -61,7 +61,7 @@ public class RedefinePasswordService {
 
 	public void redefinePassword(PasswordResetDTO passwordResetDTO) {
 		User user = new User();
-		user = userService.findByCodeRedefinePassword(passwordResetDTO.getCode());
+		user = passwordResetDTO.getCode() != null ? userService.findByCodeRedefinePassword(passwordResetDTO.getCode()) : userService.findByEmail(passwordResetDTO.getEmailUser());
 		user.setPassword(userService.encode(passwordResetDTO.getNewPassword()));
 		userService.alterUser(user);
 	

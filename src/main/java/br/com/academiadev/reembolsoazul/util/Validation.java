@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class Validation {
 
 	public Boolean validEmail(String email) {
-		Pattern pattern = Pattern.compile("^\\w*([\\._]{0,}\\w*){1,}@\\w*\\.[a-z]+(\\.[a-z]+)?$");
+		Pattern pattern = Pattern.compile("^\\w*([\\._+]{0,}\\w*){1,}@\\w*\\.[a-z]+(\\.[a-z]+)?$");
 		return pattern.matcher(email).matches();
 	}
 	
