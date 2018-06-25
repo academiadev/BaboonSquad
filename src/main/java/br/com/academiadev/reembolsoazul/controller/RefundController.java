@@ -28,73 +28,63 @@ import io.swagger.annotations.ApiResponses;
 @Api("Reembolso")
 @RestController
 @RequestMapping("/reembolso")
-public class RefundController {
+public class RefundController extends UploadController {
 
 	@Autowired
 	private RefundService refundService;
 
 	@ApiImplicitParams({
-		@ApiImplicitParam(name="Authorization", value="Authorization token", required = true, dataType= "string", paramType = "header")
-	})
+			@ApiImplicitParam(name = "Authorization", value = "Authorization token", required = true, dataType = "string", paramType = "header") })
 	@ApiOperation(value = "Cadastra um reembolso")
 	@ApiResponses(value = { //
-			@ApiResponse(code = 201, message = "Reembolso cadastrado com sucesso")
-	})
+			@ApiResponse(code = 201, message = "Reembolso cadastrado com sucesso") })
 	@PostMapping(value = "/")
 	public ResponseEntity<RefundDTO> PostReembolso(@RequestBody RefundDTO refundDto) throws ClassNotFoundException {
 
 		return new ResponseEntity<>(refundService.postRefund(refundDto), HttpStatus.CREATED);
 	}
-	
+
 	@ApiImplicitParams({
-		@ApiImplicitParam(name="Authorization", value="Authorization token", required = true, dataType= "string", paramType = "header")
-	})
+			@ApiImplicitParam(name = "Authorization", value = "Authorization token", required = true, dataType = "string", paramType = "header") })
 	@ApiOperation(value = "Listar reembolsos")
 	@ApiResponses(value = { //
-			@ApiResponse(code = 200, message = "Lista de reembolsos")
-	})
+			@ApiResponse(code = 200, message = "Lista de reembolsos") })
 	@GetMapping("/listaReembolsosCategoria/{userId}")
 	public ResponseEntity<Map<String, List<RefundExpenseDTO>>> getAllRefundsExpenseByUser(@PathVariable Long userId) {
 		return new ResponseEntity<>(refundService.getAllRefundsExpenseByUser(userId), HttpStatus.OK);
 	}
-	
+
 	@ApiImplicitParams({
-		@ApiImplicitParam(name="Authorization", value="Authorization token", required = true, dataType= "string", paramType = "header")
-	})
+			@ApiImplicitParam(name = "Authorization", value = "Authorization token", required = true, dataType = "string", paramType = "header") })
 	@ApiOperation(value = "Listar reembolsos por usuários")
 	@ApiResponses(value = { //
-			@ApiResponse(code = 200, message = "Lista de reembolsos por usuários")
-	})
+			@ApiResponse(code = 200, message = "Lista de reembolsos por usuários") })
 	@GetMapping("/usuario/{userIdStr}")
 	public ResponseEntity<List<RefundDTO>> getAllRefundsByUser(@PathVariable Long userIdStr) {
 		Long userId = new Long(userIdStr);
 		return new ResponseEntity<>(refundService.getAllRefundsByUser(userId), HttpStatus.OK);
 	}
-	
+
 	@ApiImplicitParams({
-		@ApiImplicitParam(name="Authorization", value="Authorization token", required = true, dataType= "string", paramType = "header")
-	})
+			@ApiImplicitParam(name = "Authorization", value = "Authorization token", required = true, dataType = "string", paramType = "header") })
 	@ApiOperation(value = "Atualiza um reembolsos")
 	@ApiResponses(value = { //
-			@ApiResponse(code = 200, message = "Reembolsos atualizado") 
-	})
+			@ApiResponse(code = 200, message = "Reembolsos atualizado") })
 	@PutMapping("/edit/{id}")
 	public ResponseEntity<RefundDTO> putRefund(@RequestBody RefundDTO refundDto) throws ClassNotFoundException {
 
 		return new ResponseEntity<>(refundService.putRefund(refundDto), HttpStatus.OK);
 	}
-	
+
 	@ApiImplicitParams({
-		@ApiImplicitParam(name="Authorization", value="Authorization token", required = true, dataType= "string", paramType = "header")
-	})
+			@ApiImplicitParam(name = "Authorization", value = "Authorization token", required = true, dataType = "string", paramType = "header") })
 	@ApiOperation(value = "Deleta um reembolsos")
 	@ApiResponses(value = { //
-			@ApiResponse(code = 200, message = "Reembolsos deletado") 
-	})
+			@ApiResponse(code = 200, message = "Reembolsos deletado") })
 	@DeleteMapping("/delete/{refundId}")
-	public ResponseEntity<RefundDTO> deleteRefund(@PathVariable Long refundId){
+	public ResponseEntity<RefundDTO> deleteRefund(@PathVariable Long refundId) {
 		refundService.deleteRefund(refundId);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
+
 }
