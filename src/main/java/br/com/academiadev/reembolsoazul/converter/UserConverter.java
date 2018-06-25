@@ -7,8 +7,8 @@ import br.com.academiadev.reembolsoazul.dto.UserDTO;
 import br.com.academiadev.reembolsoazul.model.User;
 
 @Component
-public class UserConverter implements Converter<User, UserDTO>{
-
+public class UserConverter implements IToEntityConverter< UserDTO, User>, IToDTOConverter<User, UserDTO> {
+	
 	@Autowired
 	private CompanyConverter companyConverter;
 	

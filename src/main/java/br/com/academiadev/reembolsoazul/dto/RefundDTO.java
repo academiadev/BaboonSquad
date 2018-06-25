@@ -13,5 +13,5 @@ public class RefundDTO {
 	private String userName;
 	private String value;
 	private String file;
-	private String showForUser;
+	private Boolean showForUser;
 }

@@ -130,7 +130,6 @@ public class RefundController extends UploadController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-	
 	@ApiImplicitParams({
 		@ApiImplicitParam(name = "Authorization", value = "Authorization token", required = true, dataType = "string", paramType = "header") })
 			@ApiOperation(value = "Listar gastos po usuários")
