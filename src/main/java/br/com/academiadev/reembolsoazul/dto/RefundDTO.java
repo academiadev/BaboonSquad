@@ -12,4 +12,5 @@ public class RefundDTO {
 	private String date;
 	private String userName;
 	private String value;
+	private String showForUser;
 }

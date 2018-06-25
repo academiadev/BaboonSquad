@@ -11,10 +11,12 @@ import org.springframework.stereotype.Service;
 
 import br.com.academiadev.reembolsoazul.converter.RefundConverter;
 import br.com.academiadev.reembolsoazul.converter.RefundExpenseConverter;
+import br.com.academiadev.reembolsoazul.dto.ListIdDTO;
 import br.com.academiadev.reembolsoazul.dto.RefundDTO;
 import br.com.academiadev.reembolsoazul.dto.RefundExpenseDTO;
 import br.com.academiadev.reembolsoazul.model.Refund;
 import br.com.academiadev.reembolsoazul.model.RefundCategory;
+import br.com.academiadev.reembolsoazul.model.RefundStatus;
 import br.com.academiadev.reembolsoazul.repository.RefundRepository;
 
 @Service
@@ -66,9 +68,28 @@ public class RefundService {
 		return refundDto;
 	}
 	
-	public void deleteRefund(Long refundId) {
-		refundRepository.delete(refundId); 
-		return;
+	public void deleteRefunds(List<ListIdDTO> listIdDTO) {
+		for(ListIdDTO refundIdDto : listIdDTO) {
+			Refund refund = refundRepository.findOne(refundIdDto.getId());
+			if(refund.getStatus() != RefundStatus.APROVADO) {
+				refundRepository.delete(refundIdDto.getId());
+			}else {
+				refund.setShowForUser(false);
+				refundRepository.save(refund);
+			}
+		}
+	}
+	
+	public void putRefundChangeStatus(List<ListIdDTO> listIdDTO, Integer statusId) {
+		
+		
+		for(ListIdDTO refundIdDto : listIdDTO) {
+			Refund refund = refundRepository.findOne(refundIdDto.getId());
+			if(refund.getStatus() != RefundStatus.APROVADO) {
+				refund.setStatusById(statusId);
+				refundRepository.save(refund);
+			}
+		}
 	}
 	
 	public List<RefundDTO> getAllRefundsByUser(Long userId) {
@@ -76,6 +97,18 @@ public class RefundService {
 		List<RefundDTO> refundDTOList = new ArrayList<>();
 		for (Refund refund : refundList) {
 			refundDTOList.add(refundConverter.toDTO(refund));
+		}
+
+		return refundDTOList;
+	}
+	
+	public List<RefundDTO> getAllRefundsVisibleByUser(Long userId) {
+		List<Refund> refundList = refundRepository.findByUser_Id(userId);
+		List<RefundDTO> refundDTOList = new ArrayList<>();
+		for (Refund refund : refundList) {
+			if(refund.getShowForUser()) {
+				refundDTOList.add(refundConverter.toDTO(refund));
+			}
 		}
 
 		return refundDTOList;
