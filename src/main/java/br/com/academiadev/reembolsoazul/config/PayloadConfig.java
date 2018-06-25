@@ -74,6 +74,7 @@ public class PayloadConfig implements ApplicationListener<ContextRefreshedEvent>
 			refund.setCategory(RefundCategory.ALIMENTACAO);
 			refund.setName("Teste " + i);
 			refund.setStatus(RefundStatus.AGUARDANDO);
+			refund.setShowForUser(true);
 			refund.setValue(PayloadConfig.generateRandomBigDecimalFromRange(BigDecimal.ZERO, new BigDecimal(20)));
 			refund.setDate(PayloadConfig.generateRandomDateFromYear(2017));
 			refund.setUser(user);
@@ -85,6 +86,7 @@ public class PayloadConfig implements ApplicationListener<ContextRefreshedEvent>
 			Refund refund = new Refund();
 			refund.setCategory(RefundCategory.HOSPEDAGEM);
 			refund.setName("Teste " + i);
+			refund.setShowForUser(true);
 			refund.setStatus(RefundStatus.AGUARDANDO);
 			refund.setValue(PayloadConfig.generateRandomBigDecimalFromRange(BigDecimal.ZERO, new BigDecimal(20)));
 			refund.setDate(PayloadConfig.generateRandomDateFromYear(2017));
@@ -98,6 +100,7 @@ public class PayloadConfig implements ApplicationListener<ContextRefreshedEvent>
 			refund.setId(i);
 			refund.setCategory(RefundCategory.TRANSPORTE);
 			refund.setName("Teste " + i);
+			refund.setShowForUser(true);
 			refund.setStatus(RefundStatus.AGUARDANDO);
 			refund.setValue(PayloadConfig.generateRandomBigDecimalFromRange(BigDecimal.ZERO, new BigDecimal(20)));
 			refund.setDate(PayloadConfig.generateRandomDateFromYear(2017));

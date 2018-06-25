@@ -11,13 +11,13 @@ import br.com.academiadev.reembolsoazul.repository.UserRepository;
 import br.com.academiadev.reembolsoazul.util.Util;
 
 @Component
-public class RefundConverter implements Converter<Refund, RefundDTO> {
+public class RefundConverter implements IToEntityConverter<RefundDTO, Refund>, IToDTOConverter<Refund, RefundDTO> {
 
 	@Autowired
 	private RefundCategoryConverter refundCategoryConverter;
 	@Autowired
 	private UserRepository user;
-	
+
 	@Override
 	public RefundDTO toDTO(Refund entity) {
 		RefundDTO dto = new RefundDTO();
@@ -27,24 +27,29 @@ public class RefundConverter implements Converter<Refund, RefundDTO> {
 		dto.setStatus(entity.getStatus().getId());
 		dto.setUserName(entity.getUser().getName());
 		dto.setValue(entity.getValue().toString());
-		dto.setDate(Util.dateToString(entity.getDate())); 
+		dto.setDate(Util.dateToString(entity.getDate()));
 		dto.setShowForUser(entity.getShowForUser());
 		dto.setFile(entity.getFile());
 		return dto;
 	}
 
 	@Override
-	public Refund toEntity(RefundDTO dto) throws ClassNotFoundException {
+	public Refund toEntity(RefundDTO dto) {
 		Refund entity = new Refund();
 		entity.setId(dto.getId());
 		entity.setName(dto.getName());
-		entity.setCategory(refundCategoryConverter.idtoEntity(dto.getCategory()));
 		entity.setStatusById(dto.getStatus());
 		entity.setDate(Util.stringToDate(dto.getDate()));
 		entity.setValue(new BigDecimal(dto.getValue()));
 		entity.setUser(user.findByEmail(dto.getUserName()));
 		entity.setShowForUser(dto.getShowForUser());
 		entity.setFile(dto.getFile());
+
+		try {
+			entity.setCategory(refundCategoryConverter.idtoEntity(dto.getCategory()));
+		} catch (ClassNotFoundException e) {
+		}
+		
 		return entity;
 	}
 

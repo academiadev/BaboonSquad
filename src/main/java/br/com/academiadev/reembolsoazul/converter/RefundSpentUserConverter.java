@@ -6,8 +6,8 @@ import br.com.academiadev.reembolsoazul.dto.RefundSpentUserDTO;
 import br.com.academiadev.reembolsoazul.model.Refund;
 
 @Component
-public class RefundSpentUserConverter  implements Converter<Refund, RefundSpentUserDTO>{
-
+public class RefundSpentUserConverter  implements  IToDTOConverter<Refund, RefundSpentUserDTO>{
+ 
 	@Override
 	public RefundSpentUserDTO toDTO(Refund entity) {
 		RefundSpentUserDTO dto = new RefundSpentUserDTO();
@@ -16,12 +16,4 @@ public class RefundSpentUserConverter  implements Converter<Refund, RefundSpentU
 		dto.setValue(entity.getValue().toString());
 		return dto;
 	}
-
-	@Override
-	public Refund toEntity(RefundSpentUserDTO dto) throws ClassNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
 }
