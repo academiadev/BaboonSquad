@@ -11,9 +11,11 @@ import org.springframework.stereotype.Service;
 
 import br.com.academiadev.reembolsoazul.converter.RefundConverter;
 import br.com.academiadev.reembolsoazul.converter.RefundExpenseConverter;
+import br.com.academiadev.reembolsoazul.converter.RefundSpentUserConverter;
 import br.com.academiadev.reembolsoazul.dto.ListIdDTO;
 import br.com.academiadev.reembolsoazul.dto.RefundDTO;
 import br.com.academiadev.reembolsoazul.dto.RefundExpenseDTO;
+import br.com.academiadev.reembolsoazul.dto.RefundSpentUserDTO;
 import br.com.academiadev.reembolsoazul.model.Refund;
 import br.com.academiadev.reembolsoazul.model.RefundCategory;
 import br.com.academiadev.reembolsoazul.model.RefundStatus;
@@ -24,9 +26,14 @@ public class RefundService {
 
 	@Autowired
 	private RefundConverter refundConverter;
+	
 	@Autowired
 	private RefundExpenseConverter refundExpenseConverter;
 
+	@Autowired
+	private RefundSpentUserConverter refundSpentUserConverter;
+
+	
 	@Autowired
 	private RefundRepository refundRepository;
 
@@ -111,6 +118,11 @@ public class RefundService {
 		}
 
 		return refundDTOList;
+	}
+	
+	public List<RefundSpentUserDTO> findSpentForUserByCompany(Integer id){
+		List<Refund> refundList = refundRepository.findByStatusAndUser_Company_code(RefundStatus.APROVADO, id);
+		return refundList.stream().map(refundSpentUserConverter::toDTO).collect(Collectors.toList());
 	}
 	
 }
