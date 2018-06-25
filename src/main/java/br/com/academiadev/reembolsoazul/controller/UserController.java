@@ -34,7 +34,7 @@ public class UserController {
 	}
 	
 	@PostMapping(value ="/alterar")
-	public ResponseEntity<?> alterRegister(@RequestBody UserAlterDTO userAlterDTO, Device dispositivo ) {
+	public ResponseEntity<?> alterRegister(@RequestBody UserAlterDTO userAlterDTO, Device dispositivo ) throws EmailExecption {
 		userService.alterRegister(userAlterDTO);
 		User user = userService.getUserByEmail(userAlterDTO.getNewEmail());
 		String token = tokenHelper.gerarToken(user, dispositivo);

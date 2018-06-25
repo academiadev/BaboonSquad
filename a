@@ -1,0 +1,315 @@
+[33mcommit 5b10f998d0ef7407fff0cf4ec271a0b9165a602f[m
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Mon Jun 25 09:09:42 2018 -0300
+
+    Configurações
+
+[33mcommit a6c98ed4bd5ead0fdf8599d80fdd3d077c84aa85[m
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Mon Jun 25 08:59:14 2018 -0300
+
+    Teste
+
+[33mcommit 1cc9afedb8fea8e81319df1fe125de1968237e0e[m
+Merge: 8510167 b88a8d6
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Sun Jun 24 23:58:00 2018 -0300
+
+    Merge branch 'master' of https://github.com/academiadev/BaboonSquad-Back-end
+
+[33mcommit 8510167ad9964855572802acfbbe9ec23fe7a418[m
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Sun Jun 24 23:57:45 2018 -0300
+
+    Mudanças user
+
+[33mcommit b88a8d6d4257669a3b5176c1cd89fcab65ff0a27[m
+Author: Matheus Queiroz <matheusqz@gmail.com>
+Date:   Sun Jun 24 23:45:51 2018 -0300
+
+    Adicionado as funcionalidades de aceite, rejeito, edição de reembolsos
+
+[33mcommit 94e0aac5ca84162bc07856faa4c9574ca1f9a427[m
+Merge: c2c8aea 50fea04
+Author: afabianoo <afabiano97@gmail.com>
+Date:   Sun Jun 24 08:41:02 2018 -0300
+
+    Merge branch 'master' of https://github.com/academiadev/BaboonSquad-Back-end
+
+[33mcommit c2c8aea4c08b1f406f035ea9993d00074b9f3f4e[m
+Author: afabianoo <afabiano97@gmail.com>
+Date:   Sun Jun 24 08:40:53 2018 -0300
+
+    ajustado query de buscar reembolsos
+
+[33mcommit 50fea0430ea2da90619ee3527d311a487d64ab7c[m
+Merge: 02410dd 2d58a47
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Sat Jun 23 16:28:20 2018 -0300
+
+    Merge branch 'master' of https://github.com/academiadev/BaboonSquad-Back-end
+
+[33mcommit 02410dd2afdf397cea09b69b14cffe20c1eb89a0[m
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Sat Jun 23 16:27:16 2018 -0300
+
+    Correção na redefinição de senha, e cadastro de usuário
+
+[33mcommit 2d58a4709ba461b1e3d0c6df604074bfe756af47[m
+Merge: b08ca7b 9485300
+Author: afabianoo <afabiano97@gmail.com>
+Date:   Sat Jun 23 16:24:39 2018 -0300
+
+    merge com master
+
+[33mcommit b08ca7b5d3209a21b83b9abb0f141786a2b04ec5[m
+Author: afabianoo <afabiano97@gmail.com>
+Date:   Sat Jun 23 16:22:45 2018 -0300
+
+    ajustado gerador de reembolso
+
+[33mcommit 9485300bfadedc8f0fe073d06ee49bf64ba86f0f[m
+Author: Matheus Queiroz <matheusqz@gmail.com>
+Date:   Sat Jun 23 16:15:09 2018 -0300
+
+    Cadastro de reembolsos
+
+[33mcommit 47805d617b4f1ddcbcbddc1d5543d8e20b553253[m
+Merge: b552eca 0a2f662
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Sat Jun 23 08:38:51 2018 -0300
+
+    Merge
+
+[33mcommit b552eca18cf7b1fa13814c4fb174aa5aa0703eac[m
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Sat Jun 23 08:35:02 2018 -0300
+
+    Validações no cadastro usuário
+
+[33mcommit ee3528c82c37aa0564d29ac2ff44ebe764b561e8[m
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Fri Jun 22 20:15:48 2018 -0300
+
+    Teste heroku
+
+[33mcommit 0a2f662b18f9b060b83dda1e445b28476f6f8ba8[m
+Merge: 2e232c4 076212b
+Author: afabianoo <afabiano97@gmail.com>
+Date:   Tue Jun 19 21:31:47 2018 -0300
+
+    Merge branch 'master' of https://github.com/academiadev/BaboonSquad-Back-end
+
+[33mcommit 2e232c44e8837efbf14347f01481155699883c15[m
+Author: afabianoo <afabiano97@gmail.com>
+Date:   Tue Jun 19 21:31:30 2018 -0300
+
+    realizado grouping
+
+[33mcommit 25ee724c3c34d93aaa4011b89c4b5ae413397bc4[m
+Author: afabianoo <afabiano97@gmail.com>
+Date:   Sun Jun 17 11:46:33 2018 -0300
+
+    realizado config no payload geral
+
+[33mcommit 076212b7bb27bb7260de5f744d7034548a6da946[m
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Sun Jun 17 11:15:00 2018 -0300
+
+    Correção de import e status http
+
+[33mcommit 856018290819cc3c08a193e651044158e7231480[m
+Merge: bcd009b 983f002
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Sun Jun 17 11:03:30 2018 -0300
+
+    Merge branch 'master' of https://github.com/academiadev/BaboonSquad-Back-end
+
+[33mcommit bcd009b84bc1069a93d1fab33c1f7cc98dbac6e5[m
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Sun Jun 17 11:03:18 2018 -0300
+
+    Alterações para a rotina de redefinição de senha
+
+[33mcommit 983f002d804cc0c17bfb1cba9c29af375e45406a[m
+Merge: 82234c4 283b57d
+Author: afabianoo <afabiano97@gmail.com>
+Date:   Sun Jun 17 10:12:49 2018 -0300
+
+    Merge branch 'master' of https://github.com/academiadev/BaboonSquad-Back-end
+
+[33mcommit 283b57dd1c0cfc25b1cb2196f3ab2915ef417dd5[m
+Merge: 53c4eec cee066b
+Author: Matheus Queiroz <matheusqz@gmail.com>
+Date:   Sun Jun 17 10:11:42 2018 -0300
+
+    Resolução de conflitos
+
+[33mcommit 53c4eec2d20b4ed19f06dd511d9b917dbe5c5795[m
+Author: Matheus Queiroz <matheusqz@gmail.com>
+Date:   Sun Jun 17 10:03:17 2018 -0300
+
+    Informações do usuário no payload do jwt e carga inicial no bando de dados do projeto
+
+[33mcommit 82234c491d4549eddb4bf9b0ede886f241419b4a[m
+Author: afabianoo <afabiano97@gmail.com>
+Date:   Sun Jun 17 10:00:20 2018 -0300
+
+    realizado ajustes no utilse implementado refundExpenseDTO
+
+[33mcommit cee066b72523a916ebdc5dacb17dd90bc5a912c5[m
+Merge: 5e4ed70 1988fff
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Sat Jun 16 16:01:11 2018 -0300
+
+    any change
+
+[33mcommit 5e4ed7092b00140054fe41dff81d1b4182f461a5[m
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Sat Jun 16 14:42:53 2018 -0300
+
+    Alterações para redefinir senha
+
+[33mcommit 1988ffff1cb39f4fbb32c9d93880da0a63307cb5[m
+Author: Matheus Queiroz <matheusqz@gmail.com>
+Date:   Sat Jun 16 14:08:50 2018 -0300
+
+    Troca de idioma no código
+
+[33mcommit 48d6457880c7e957aa239eebf4c97203398ebf96[m
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Fri Jun 15 08:47:28 2018 -0300
+
+    Rotina de redefinição de senha
+
+[33mcommit 10fcb9e92fcbd702ffcdd3033dcc81de410dadfd[m
+Merge: e6f935c 73ff43a
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Tue Jun 12 01:02:39 2018 -0300
+
+    Criação da entidade para redefinição de senha e alterações para o ingles
+
+[33mcommit e6f935cf84c142890498e4986abe083b5916d9ea[m
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Tue Jun 12 00:57:38 2018 -0300
+
+    Criação da model para redifinição de senha e alterações para o ingles
+
+[33mcommit 73ff43ad8cd4c74d41f33d043578cef2dc63a516[m
+Merge: 2bd4937 61f85af
+Author: afabianoo <afabiano97@gmail.com>
+Date:   Sun Jun 10 19:32:15 2018 -0300
+
+    merge com master
+
+[33mcommit 2bd4937b44d59b76b639f388fe90901699ccef76[m
+Author: afabianoo <afabiano97@gmail.com>
+Date:   Sun Jun 10 19:28:50 2018 -0300
+
+    realizado ajustes do data em varias classes
+
+[33mcommit 61f85af16bb0031dc92f9cfc45aa2959d5b38cfc[m
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Sun Jun 10 10:37:10 2018 -0300
+
+    Alterando para inglês
+
+[33mcommit 7c425d326a73a6c057f9fcfabfa733f8fc37c279[m
+Merge: 7a7e577 46f9515
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Sat Jun 9 16:00:36 2018 -0300
+
+    Merge com master
+
+[33mcommit 7a7e57717bbdfaea562b183bb8c386e277da5525[m
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Sat Jun 9 15:55:04 2018 -0300
+
+    Correções aut
+
+[33mcommit 46f95158f0f90bbcc0671b03ff0aef378200c0a2[m
+Merge: 7b3286c c325b15
+Author: Matheus Queiroz <matheusqz@gmail.com>
+Date:   Sat Jun 9 15:51:20 2018 -0300
+
+    Atualização no reembolso
+
+[33mcommit a821e38c8c6e1cb577c1ebf9e02ff3bbd79f5553[m
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Fri Jun 8 21:36:04 2018 -0300
+
+    Alterações referente a autenticação
+
+[33mcommit c325b15a0f20d9e60864b76f2bff8d5e46b5b44a[m
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Thu Jun 7 17:40:09 2018 -0300
+
+    no message
+
+[33mcommit 4daaeb7b11d2f60ef1b6de498329de0ec66893ac[m
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Thu Jun 7 17:38:01 2018 -0300
+
+    no message
+
+[33mcommit da5c843f7e9426199c21ac99faac10b37712c8a8[m
+Merge: 84422da 99eda7c
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Thu Jun 7 17:08:38 2018 -0300
+
+    Merge remote-tracking branch 'origin/featurePessoa'
+    
+    # Conflicts:
+    #	src/main/java/br/com/academiadev/reembolsoazul/repository/EmpresasRepository.java
+    #	src/main/java/br/com/academiadev/reembolsoazul/service/PessoaService.java
+    #	src/main/java/com/academiadev/reembolsoazul/model/Reembolso.java
+    #	src/main/java/com/academiadev/reembolsoazul/repository/EmpresaRepository.java
+    #	src/main/java/com/academiadev/reembolsoazul/repository/EmpresasRepository.java
+
+[33mcommit 99eda7cacab296db5c64a5fb55d6b4d52961eb41[m
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Thu Jun 7 15:12:18 2018 -0300
+
+    Alterações no cadastro de empresa e configurações de email
+
+[33mcommit 7b3286c813aa47975a279035db522397f9c4820e[m
+Author: Matheus Queiroz <matheusqz@gmail.com>
+Date:   Thu May 31 19:53:15 2018 -0300
+
+    Funcionalidades do service de Reembolso
+
+[33mcommit f9227a9c7b4d0d8924a2518292f3eb980265c5ed[m
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Wed May 30 22:12:40 2018 -0300
+
+    Configurações de email
+
+[33mcommit 84422daa7c8c9ab4d00bcb52b782c43a5c169a27[m
+Author: Matheus Queiroz <matheusqz@gmail.com>
+Date:   Sun May 27 09:11:00 2018 -0300
+
+    Adicionado configurações globais e interface de converter
+
+[33mcommit 2e403c3dbc8853709d9cbd21c9b2d834d892277f[m
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Sat May 26 16:07:12 2018 -0300
+
+    Alterações para cadastrar uma pessoa
+
+[33mcommit 6cf0599b9f4f73f21d65c160ddf1029fae382014[m
+Author: Matheus Queiroz <matheusqz@gmail.com>
+Date:   Mon May 21 00:06:09 2018 -0300
+
+    Adicionado novas classes para Reembolso
+
+[33mcommit 62a0d37a2f30a2b35e86695154476f3eafe5dc16[m
+Author: EricMesquita <eric.oliveira.mesquita@gmail.com>
+Date:   Sat May 19 13:51:10 2018 -0300
+
+    no message
+
+[33mcommit 37109dd4a07539f0b0b5f69b91de9e0f0d73c0d2[m
+Author: Matheusqz <matheusqz@gmail.com>
+Date:   Sun Apr 29 09:22:44 2018 -0300
+
+    Initial commit
