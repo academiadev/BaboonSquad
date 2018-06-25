@@ -29,19 +29,23 @@ public class UploadService {
 
 	public Resource load(String fileName) {
 		try {
-			Path file = this.rootLocation.resolve(fileName.concat(".jpg"));
+			Path file = this.rootLocation.resolve(fileName);
 			Resource resource = new UrlResource(file.toUri());
 			if (resource.exists() || resource.isReadable()) {
 				return resource;
 			}
-			throw new RuntimeException("FAIL!");
+			throw new RuntimeException("Não foi encontrado arquivo com esse nome " + fileName);
 
 		} catch (MalformedURLException e) {
-			throw new RuntimeException("FAIL!");
+			throw new RuntimeException("Caminho para essse arquivo está incorreto");
 		}
 	}
 
 	public Boolean delete(String fileName) {
-		return FileSystemUtils.deleteRecursively(this.rootLocation.resolve(fileName.concat(".jpg")).toFile());
+		try {
+			return FileSystemUtils.deleteRecursively(this.rootLocation.resolve(fileName).toFile());
+		} catch (Exception e) {
+			return false;
+		}
 	}
 }

@@ -41,7 +41,7 @@ public class UploadController {
 	
 	@ApiImplicitParams({
 		@ApiImplicitParam(name = "Authorization", value = "Authorization token", required = true, dataType = "string", paramType = "header") })
-	@GetMapping("/getImage/{fileName}")
+	@GetMapping("/getImage/{fileName:.+}")
 	@ResponseBody
 	public ResponseEntity<?> load(@PathVariable String fileName) throws IOException {
 		Resource file = uploadService.load(fileName);
@@ -55,8 +55,7 @@ public class UploadController {
 	
 	@ApiImplicitParams({
 		@ApiImplicitParam(name = "Authorization", value = "Authorization token", required = true, dataType = "string", paramType = "header") })
-	
-	@DeleteMapping("/deleteImage/{fileName}")
+	@DeleteMapping("/deleteImage/{fileName:.+}")
 	public ResponseEntity<?> delete(@PathVariable String fileName) throws IOException {
 		Boolean deleted = uploadService.delete(fileName);
 

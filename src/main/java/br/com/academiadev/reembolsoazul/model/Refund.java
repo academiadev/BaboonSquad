@@ -38,6 +38,8 @@ public class Refund implements Serializable {
 	private Boolean showForUser;
 	@Column
 	private BigDecimal value;
+	@Column
+	private String file;
 	
 	@ManyToOne
 	private User user;

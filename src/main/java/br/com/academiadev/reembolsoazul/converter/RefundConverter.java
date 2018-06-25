@@ -28,7 +28,8 @@ public class RefundConverter implements Converter<Refund, RefundDTO> {
 		dto.setUserName(entity.getUser().getName());
 		dto.setValue(entity.getValue().toString());
 		dto.setDate(Util.dateToString(entity.getDate())); 
-		dto.setShowForUser(entity.getShowForUser().toString());
+		dto.setShowForUser(entity.getShowForUser());
+		dto.setFile(entity.getFile());
 		return dto;
 	}
 
@@ -42,7 +43,8 @@ public class RefundConverter implements Converter<Refund, RefundDTO> {
 		entity.setDate(Util.stringToDate(dto.getDate()));
 		entity.setValue(new BigDecimal(dto.getValue()));
 		entity.setUser(user.findByEmail(dto.getUserName()));
-		entity.setShowForUser(dto.getShowForUser()=="true");
+		entity.setShowForUser(dto.getShowForUser());
+		entity.setFile(dto.getFile());
 		return entity;
 	}
 
