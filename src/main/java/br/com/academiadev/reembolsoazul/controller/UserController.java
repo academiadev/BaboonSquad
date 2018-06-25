@@ -41,6 +41,5 @@ public class UserController {
 		int expiresIn = tokenHelper.getExpiredIn(dispositivo);
 		return ResponseEntity.ok(new TokenDTO(token, Long.valueOf(expiresIn)));
 	}
-	
-	
+
 }
