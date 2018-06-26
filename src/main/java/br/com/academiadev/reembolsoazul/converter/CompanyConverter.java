@@ -6,7 +6,7 @@ import br.com.academiadev.reembolsoazul.dto.CompanyDTO;
 import br.com.academiadev.reembolsoazul.model.Company;
 
 @Component
-public class CompanyConverter implements Converter<Company, CompanyDTO> {
+public class CompanyConverter implements IToEntityConverter< CompanyDTO, Company>, IToDTOConverter<Company, CompanyDTO> {
 
 	@Override
 	public CompanyDTO toDTO(Company entity) {

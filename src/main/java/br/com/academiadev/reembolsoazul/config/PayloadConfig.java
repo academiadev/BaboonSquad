@@ -52,6 +52,7 @@ public class PayloadConfig implements ApplicationListener<ContextRefreshedEvent>
 		Company company = new Company();
 		company.setId(1l);
 		company.setName("Empresa Teste");
+		company.setCode(1);
 
 		return companyRepository.save(company);
 	}
@@ -59,7 +60,7 @@ public class PayloadConfig implements ApplicationListener<ContextRefreshedEvent>
 	private User payloadUser(Company company) {
 		User user = new User();
 		user.setId(1l);
-		user.setName("Funcionário");
+		user.setName("Funcionï¿½rio");
 		user.setEmail("teste@gmail.com");
 		user.setCompany(company);
 		user.setPassword("$2a$10$I3YQNzxkfIzpmapGr/TQc.R3hhOyZz.dbDU7..HMjIUpKMkOv5WsC");
@@ -73,6 +74,7 @@ public class PayloadConfig implements ApplicationListener<ContextRefreshedEvent>
 			refund.setCategory(RefundCategory.ALIMENTACAO);
 			refund.setName("Teste " + i);
 			refund.setStatus(RefundStatus.AGUARDANDO);
+			refund.setShowForUser(true);
 			refund.setValue(PayloadConfig.generateRandomBigDecimalFromRange(BigDecimal.ZERO, new BigDecimal(20)));
 			refund.setDate(PayloadConfig.generateRandomDateFromYear(2017));
 			refund.setUser(user);
@@ -84,6 +86,7 @@ public class PayloadConfig implements ApplicationListener<ContextRefreshedEvent>
 			Refund refund = new Refund();
 			refund.setCategory(RefundCategory.HOSPEDAGEM);
 			refund.setName("Teste " + i);
+			refund.setShowForUser(true);
 			refund.setStatus(RefundStatus.AGUARDANDO);
 			refund.setValue(PayloadConfig.generateRandomBigDecimalFromRange(BigDecimal.ZERO, new BigDecimal(20)));
 			refund.setDate(PayloadConfig.generateRandomDateFromYear(2017));
@@ -97,6 +100,7 @@ public class PayloadConfig implements ApplicationListener<ContextRefreshedEvent>
 			refund.setId(i);
 			refund.setCategory(RefundCategory.TRANSPORTE);
 			refund.setName("Teste " + i);
+			refund.setShowForUser(true);
 			refund.setStatus(RefundStatus.AGUARDANDO);
 			refund.setValue(PayloadConfig.generateRandomBigDecimalFromRange(BigDecimal.ZERO, new BigDecimal(20)));
 			refund.setDate(PayloadConfig.generateRandomDateFromYear(2017));

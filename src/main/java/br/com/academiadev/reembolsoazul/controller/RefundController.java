@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.academiadev.reembolsoazul.dto.ListIdDTO;
 import br.com.academiadev.reembolsoazul.dto.RefundDTO;
 import br.com.academiadev.reembolsoazul.dto.RefundExpenseDTO;
+import br.com.academiadev.reembolsoazul.dto.RefundSpentUserDTO;
 import br.com.academiadev.reembolsoazul.service.RefundService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -55,9 +56,9 @@ public class RefundController extends UploadController {
 
 	@ApiImplicitParams({
 			@ApiImplicitParam(name = "Authorization", value = "Authorization token", required = true, dataType = "string", paramType = "header") })
-	@ApiOperation(value = "Listar reembolsos por usuários")
+	@ApiOperation(value = "Listar reembolsos por usuÃ¡rios")
 	@ApiResponses(value = { //
-			@ApiResponse(code = 200, message = "Lista de reembolsos por usuários")
+			@ApiResponse(code = 200, message = "Lista de reembolsos por usuï¿½rios")
 	})
 	@GetMapping("/usuario/{userId}")
 	public ResponseEntity<List<RefundDTO>> getAllRefundsByUser(@PathVariable("userId") Long userId) {
@@ -78,9 +79,9 @@ public class RefundController extends UploadController {
 	@ApiImplicitParams({
 		@ApiImplicitParam(name="Authorization", value="Authorization token", required = true, dataType= "string", paramType = "header")
 	})
-	@ApiOperation(value = "Listar reembolsos visíveis para o usuário")
+	@ApiOperation(value = "Listar reembolsos visï¿½veis para o usuï¿½rio")
 	@ApiResponses(value = { //
-			@ApiResponse(code = 200, message = "Lista de reembolsos visíveis para o usuários")
+			@ApiResponse(code = 200, message = "Lista de reembolsos visï¿½veis para o usuï¿½rios")
 	})
 	@GetMapping("/usuario/{userId}/visible")
 	public ResponseEntity<List<RefundDTO>> getAllRefundsVisibleByUser(@PathVariable("userId") Long userId) {
@@ -138,6 +139,17 @@ public class RefundController extends UploadController {
 	public ResponseEntity<RefundDTO> deleteRefund(@RequestBody List<ListIdDTO> listIdDTO){
 		refundService.deleteRefunds(listIdDTO);
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "Authorization", value = "Authorization token", required = true, dataType = "string", paramType = "header") })
+			@ApiOperation(value = "Listar gastos po usuÃ¡rios")
+		@ApiResponses(value = { //
+				@ApiResponse(code = 200, message = "Lista de gastos por usuï¿½rios")
+		})
+	@GetMapping("/spent/{companyId}")
+	public ResponseEntity<List<RefundSpentUserDTO>> getSpentForUser(@PathVariable("companyId") Integer companyId){
+		return new ResponseEntity<>(refundService.findSpentForUserByCompany(companyId), HttpStatus.OK);
 	}
 
 }

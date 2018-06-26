@@ -59,8 +59,12 @@ public class UserService {
 		userRepository.save(user);
 	}
 	
-	public void alterRegister(UserAlterDTO userAlterDTO) {
-		User user = findByEmail(userAlterDTO.getEmail());
+	public void alterRegister(UserAlterDTO userAlterDTO) throws EmailExecption {
+		if(!validation.validEmail(userAlterDTO.getNewEmail()))
+			throw new EmailExecption("Email incorreto.", "400");
+		if(userRepository.findByEmailAndIdNot(userAlterDTO.getNewEmail(), userAlterDTO.getUserId())!=null) 
+			throw new EmailExecption("O email já está cadastrado", "400");
+		User user = userRepository.findOne(userAlterDTO.getUserId());
 		user.setEmail(userAlterDTO.getNewEmail());
 		user.setName(userAlterDTO.getName());
 		alterUser(user);
@@ -100,5 +104,4 @@ public class UserService {
 	public User getUserByEmail(String email) {
 		return userRepository.findByEmail(email);
 	}
-	
 }

@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class UserAlterDTO {
 
-	private String email;
+	private Long userId;
 	private String newEmail;
 	private String name;
 }
