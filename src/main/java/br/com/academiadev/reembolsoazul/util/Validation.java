@@ -12,8 +12,4 @@ public class Validation {
 		return pattern.matcher(email).matches();
 	}
 	
-	private Boolean validPassword(String senha) {
-		Pattern pattern = Pattern.compile("^[a-zA-z].{8,}$");
-		return pattern.matcher(senha).matches();
-	}
 }
