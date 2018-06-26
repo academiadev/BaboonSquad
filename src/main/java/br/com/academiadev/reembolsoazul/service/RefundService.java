@@ -14,9 +14,11 @@ import br.com.academiadev.reembolsoazul.converter.RefundExpenseConverter;
 import br.com.academiadev.reembolsoazul.dto.ListIdDTO;
 import br.com.academiadev.reembolsoazul.dto.RefundDTO;
 import br.com.academiadev.reembolsoazul.dto.RefundExpenseDTO;
+import br.com.academiadev.reembolsoazul.model.Company;
 import br.com.academiadev.reembolsoazul.model.Refund;
 import br.com.academiadev.reembolsoazul.model.RefundCategory;
 import br.com.academiadev.reembolsoazul.model.RefundStatus;
+import br.com.academiadev.reembolsoazul.repository.CompanyRepository;
 import br.com.academiadev.reembolsoazul.repository.RefundRepository;
 
 @Service
@@ -26,6 +28,8 @@ public class RefundService {
 	private RefundConverter refundConverter;
 	@Autowired
 	private RefundExpenseConverter refundExpenseConverter;
+	@Autowired
+	private CompanyRepository companyRepository;
 
 	@Autowired
 	private RefundRepository refundRepository;
@@ -93,6 +97,17 @@ public class RefundService {
 	
 	public List<RefundDTO> getAllRefundsByUser(Long userId) {
 		List<Refund> refundList = refundRepository.findByUser_Id(userId);
+		List<RefundDTO> refundDTOList = new ArrayList<>();
+		for (Refund refund : refundList) {
+			refundDTOList.add(refundConverter.toDTO(refund));
+		}
+
+		return refundDTOList;
+	}
+	
+	public List<RefundDTO> getAllRefundsByCompany(Integer companyCode) {
+		Company company = companyRepository.findByCode(companyCode);
+		List<Refund> refundList = refundRepository.findByUser_CompanyId(company.getId());
 		List<RefundDTO> refundDTOList = new ArrayList<>();
 		for (Refund refund : refundList) {
 			refundDTOList.add(refundConverter.toDTO(refund));

@@ -63,6 +63,17 @@ public class RefundController extends UploadController {
 	public ResponseEntity<List<RefundDTO>> getAllRefundsByUser(@PathVariable("userId") Long userId) {
 		return new ResponseEntity<>(refundService.getAllRefundsByUser(userId), HttpStatus.OK);
 	}
+	
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "Authorization", value = "Authorization token", required = true, dataType = "string", paramType = "header") })
+	@ApiOperation(value = "Listar reembolsos pela empresa")
+	@ApiResponses(value = { //
+			@ApiResponse(code = 200, message = "Lista de reembolsos pela empresa")
+	})
+	@GetMapping("/empresa/{companyCode}")
+	public ResponseEntity<List<RefundDTO>> getAllRefundsByCompany(@PathVariable("companyCode") Integer companyCode) {
+		return new ResponseEntity<>(refundService.getAllRefundsByCompany(companyCode), HttpStatus.OK);
+	}
 
 	@ApiImplicitParams({
 		@ApiImplicitParam(name="Authorization", value="Authorization token", required = true, dataType= "string", paramType = "header")

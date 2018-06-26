@@ -11,4 +11,6 @@ import br.com.academiadev.reembolsoazul.model.Refund;
 public interface RefundRepository extends CrudRepository<Refund, Long> {
 	
 	public List<Refund> findByUser_Id(Long user_id);
+	
+	public List<Refund> findByUser_CompanyId(Long user_company);
 }
