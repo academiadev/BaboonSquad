@@ -51,7 +51,7 @@ public class PayloadConfig implements ApplicationListener<ContextRefreshedEvent>
 	private Company payloadCompany() {
 		Company company = new Company();
 		company.setId(1l);
-		company.setName("Empresa Teste");
+		company.setName("Empresa do marcelo");
 		company.setCode(1);
 
 		return companyRepository.save(company);
@@ -60,10 +60,10 @@ public class PayloadConfig implements ApplicationListener<ContextRefreshedEvent>
 	private User payloadUser(Company company) {
 		User user = new User();
 		user.setId(1l);
-		user.setName("Funcion�rio");
-		user.setEmail("teste@gmail.com");
+		user.setName("Marcelo");
+		user.setEmail("mc@gmail.com");
 		user.setCompany(company);
-		user.setPassword("$2a$10$I3YQNzxkfIzpmapGr/TQc.R3hhOyZz.dbDU7..HMjIUpKMkOv5WsC");
+		user.setPassword("$2a$10$NcBiKEGGXD.L7J1EZy.mvOypnf8op4kQAZSyJLZ8/0eRal4cIFc2u");
 		
 		return userRepository.save(user);
 	}
@@ -72,8 +72,8 @@ public class PayloadConfig implements ApplicationListener<ContextRefreshedEvent>
 		for (Long i = 0l; i < 100l; i++) {
 			Refund refund = new Refund();
 			refund.setCategory(RefundCategory.ALIMENTACAO);
-			refund.setName("Teste " + i);
-			refund.setStatus(RefundStatus.AGUARDANDO);
+			refund.setName("Lanchonete do centro " + i);
+			refund.setStatus(RefundStatus.APROVADO);
 			refund.setShowForUser(true);
 			refund.setValue(PayloadConfig.generateRandomBigDecimalFromRange(BigDecimal.ZERO, new BigDecimal(20)));
 			refund.setDate(PayloadConfig.generateRandomDateFromYear(2017));
@@ -85,9 +85,9 @@ public class PayloadConfig implements ApplicationListener<ContextRefreshedEvent>
 		for (Long i = 100l; i < 200l; i++) {
 			Refund refund = new Refund();
 			refund.setCategory(RefundCategory.HOSPEDAGEM);
-			refund.setName("Teste " + i);
+			refund.setName("Hotel Ibis " + i);
 			refund.setShowForUser(true);
-			refund.setStatus(RefundStatus.AGUARDANDO);
+			refund.setStatus(RefundStatus.APROVADO);
 			refund.setValue(PayloadConfig.generateRandomBigDecimalFromRange(BigDecimal.ZERO, new BigDecimal(20)));
 			refund.setDate(PayloadConfig.generateRandomDateFromYear(2017));
 			refund.setUser(user);
@@ -99,9 +99,9 @@ public class PayloadConfig implements ApplicationListener<ContextRefreshedEvent>
 			Refund refund = new Refund();
 			refund.setId(i);
 			refund.setCategory(RefundCategory.TRANSPORTE);
-			refund.setName("Teste " + i);
+			refund.setName("Uber na viagem " + i);
 			refund.setShowForUser(true);
-			refund.setStatus(RefundStatus.AGUARDANDO);
+			refund.setStatus(RefundStatus.APROVADO);
 			refund.setValue(PayloadConfig.generateRandomBigDecimalFromRange(BigDecimal.ZERO, new BigDecimal(20)));
 			refund.setDate(PayloadConfig.generateRandomDateFromYear(2017));
 			refund.setUser(user);
